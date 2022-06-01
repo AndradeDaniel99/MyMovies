@@ -40,6 +40,8 @@
 		DFFD5436284721DB003E2DAD = {
 			isa = PBXGroup;
 			children = (
+				DFFD5450284721DE003E2DAD /* Info.plist */,
+				DFFD5456284722E6003E2DAD /* Resources */,
 				DFFD5441284721DB003E2DAD /* MyMovies */,
 				DFFD5440284721DB003E2DAD /* Products */,
 			);
@@ -56,15 +58,21 @@
 		DFFD5441284721DB003E2DAD /* MyMovies */ = {
 			isa = PBXGroup;
 			children = (
-				DFFD5442284721DB003E2DAD /* AppDelegate.swift */,
-				DFFD5444284721DB003E2DAD /* SceneDelegate.swift */,
 				DFFD5446284721DB003E2DAD /* ViewController.swift */,
+			);
+			path = MyMovies;
+			sourceTree = "<group>";
+		};
+		DFFD5456284722E6003E2DAD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DFFD5444284721DB003E2DAD /* SceneDelegate.swift */,
+				DFFD5442284721DB003E2DAD /* AppDelegate.swift */,
 				DFFD5448284721DB003E2DAD /* Main.storyboard */,
 				DFFD544B284721DE003E2DAD /* Assets.xcassets */,
 				DFFD544D284721DE003E2DAD /* LaunchScreen.storyboard */,
-				DFFD5450284721DE003E2DAD /* Info.plist */,
 			);
-			path = MyMovies;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
