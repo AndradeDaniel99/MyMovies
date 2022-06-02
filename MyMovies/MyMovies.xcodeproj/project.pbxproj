@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DF37B1A32848DCEF009E116D /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF37B1A22848DCEF009E116D /* MovieListView.swift */; };
+		DF37B1A62848F7C8009E116D /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF37B1A52848F7C8009E116D /* ViewCode.swift */; };
 		DFFD5443284721DB003E2DAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFD5442284721DB003E2DAD /* AppDelegate.swift */; };
 		DFFD5447284721DB003E2DAD /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFD5446284721DB003E2DAD /* MoviesListViewController.swift */; };
 		DFFD544C284721DE003E2DAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFFD544B284721DE003E2DAD /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		DF37B1A22848DCEF009E116D /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
+		DF37B1A52848F7C8009E116D /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
 		DFFD543F284721DB003E2DAD /* MyMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFFD5442284721DB003E2DAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFFD5446284721DB003E2DAD /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
@@ -35,10 +37,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF37B1A42848F7AD009E116D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DF37B1A52848F7C8009E116D /* ViewCode.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		DFFD5436284721DB003E2DAD = {
 			isa = PBXGroup;
 			children = (
 				DFFD5450284721DE003E2DAD /* Info.plist */,
+				DF37B1A42848F7AD009E116D /* Protocols */,
 				DFFD5456284722E6003E2DAD /* Resources */,
 				DFFD5441284721DB003E2DAD /* MyMovies */,
 				DFFD5440284721DB003E2DAD /* Products */,
@@ -169,6 +180,7 @@
 				DFFD5447284721DB003E2DAD /* MoviesListViewController.swift in Sources */,
 				DF37B1A32848DCEF009E116D /* MovieListView.swift in Sources */,
 				DFFD5443284721DB003E2DAD /* AppDelegate.swift in Sources */,
+				DF37B1A62848F7C8009E116D /* ViewCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
