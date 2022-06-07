@@ -39,6 +39,11 @@ class MovieCollectionViewCell: UICollectionViewCell {
     }
     
     func setupConstraints(){
+        moviePoster.topAnchor.constraint(equalTo: topAnchor)
+        moviePoster.leadingAnchor.constraint(equalTo: leadingAnchor)
+        moviePoster.trailingAnchor.constraint(equalTo: trailingAnchor)
+        moviePoster.bottomAnchor.constraint(equalTo: bottomAnchor)
+        
         
     }
     
