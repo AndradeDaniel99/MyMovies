@@ -31,6 +31,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         self.moviePoster.kf.setImage(with: moviePoster)
         self.movieTitle.text = title
         setupViewHierarchy()
+        setupConstraints()
     }
     
     func setupViewHierarchy(){
@@ -44,7 +45,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
         moviePoster.trailingAnchor.constraint(equalTo: trailingAnchor)
         moviePoster.bottomAnchor.constraint(equalTo: bottomAnchor)
         
-        
+        movieTitle.topAnchor.constraint(equalTo: moviePoster.bottomAnchor)
+        movieTitle.leadingAnchor.constraint(equalTo: moviePoster.leadingAnchor)
+        movieTitle.trailingAnchor.constraint(equalTo: moviePoster.trailingAnchor)
+        movieTitle.bottomAnchor.constraint(equalTo: bottomAnchor)
     }
     
 }
