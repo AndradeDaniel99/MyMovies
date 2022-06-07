@@ -30,8 +30,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
     func setupCell(moviePoster: URL?, title: String){
         self.moviePoster.kf.setImage(with: moviePoster)
         self.movieTitle.text = title
+        
         setupViewHierarchy()
         setupConstraints()
+        configureView()
     }
     
     func setupViewHierarchy(){
@@ -40,15 +42,18 @@ class MovieCollectionViewCell: UICollectionViewCell {
     }
     
     func setupConstraints(){
-        moviePoster.topAnchor.constraint(equalTo: topAnchor)
-        moviePoster.leadingAnchor.constraint(equalTo: leadingAnchor)
-        moviePoster.trailingAnchor.constraint(equalTo: trailingAnchor)
-        moviePoster.bottomAnchor.constraint(equalTo: bottomAnchor)
+        moviePoster.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        moviePoster.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        moviePoster.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        moviePoster.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        movieTitle.topAnchor.constraint(equalTo: moviePoster.bottomAnchor)
-        movieTitle.leadingAnchor.constraint(equalTo: moviePoster.leadingAnchor)
-        movieTitle.trailingAnchor.constraint(equalTo: moviePoster.trailingAnchor)
-        movieTitle.bottomAnchor.constraint(equalTo: bottomAnchor)
+        movieTitle.topAnchor.constraint(equalTo: moviePoster.bottomAnchor).isActive = true
+        movieTitle.leadingAnchor.constraint(equalTo: moviePoster.leadingAnchor).isActive = true
+        movieTitle.trailingAnchor.constraint(equalTo: moviePoster.trailingAnchor).isActive = true
+        movieTitle.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
+    func configureView(){
+        backgroundColor = .white
+    }
 }
