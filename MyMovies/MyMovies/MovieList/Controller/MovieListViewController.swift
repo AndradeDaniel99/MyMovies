@@ -9,7 +9,6 @@ import UIKit
 
 class MovieListViewController: UIViewController {
 
-    private var customView: MovieListView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +18,6 @@ class MovieListViewController: UIViewController {
 
     private func buildView(){
         view = MovieListView()
-        customView = view as? MovieListView
     }
 
 }

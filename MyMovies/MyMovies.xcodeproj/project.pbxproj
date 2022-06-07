@@ -13,6 +13,7 @@
 		DFA8EE56284AE458000E5A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFA8EE55284AE458000E5A39 /* Assets.xcassets */; };
 		DFA8EE59284AE458000E5A39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA8EE57284AE458000E5A39 /* LaunchScreen.storyboard */; };
 		DFA8EE65284AE77D000E5A39 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8EE64284AE77D000E5A39 /* MovieListView.swift */; };
+		DFB40B2D284E9C9500B37A5A /* MoviesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB40B2C284E9C9500B37A5A /* MoviesCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DFA8EE58284AE458000E5A39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFA8EE5A284AE458000E5A39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFA8EE64284AE77D000E5A39 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
+		DFB40B2C284E9C9500B37A5A /* MoviesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				DFA8EE5A284AE458000E5A39 /* Info.plist */,
 				DFA8EE60284AE674000E5A39 /* Resources */,
+				DFB40B2E284ED52700B37A5A /* MovieAPI */,
 				DFA8EE62284AE716000E5A39 /* MovieList */,
 			);
 			path = MyMovies;
@@ -78,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				DFA8EE50284AE453000E5A39 /* MovieListViewController.swift */,
+				DFB40B2C284E9C9500B37A5A /* MoviesCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -97,6 +101,13 @@
 				DFA8EE64284AE77D000E5A39 /* MovieListView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DFB40B2E284ED52700B37A5A /* MovieAPI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MovieAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFA8EE51284AE453000E5A39 /* MovieListViewController.swift in Sources */,
+				DFB40B2D284E9C9500B37A5A /* MoviesCollectionViewController.swift in Sources */,
 				DFA8EE65284AE77D000E5A39 /* MovieListView.swift in Sources */,
 				DFA8EE4D284AE453000E5A39 /* AppDelegate.swift in Sources */,
 				DFA8EE4F284AE453000E5A39 /* SceneDelegate.swift in Sources */,
