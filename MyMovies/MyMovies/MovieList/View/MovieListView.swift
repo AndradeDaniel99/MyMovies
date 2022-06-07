@@ -62,9 +62,7 @@ class MovieListView: UIView {
             namelabel.centerXAnchor.constraint(equalTo: hellolabel.centerXAnchor)
         ]
         
-        constraint.forEach { item in
-            item.isActive = true
-        }
+        NSLayoutConstraint.activate(constraint)
     }
     
     

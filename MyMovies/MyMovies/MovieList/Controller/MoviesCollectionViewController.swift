@@ -10,6 +10,10 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class MoviesCollectionViewController: UICollectionViewController {
+    
+    
+    let movies:[String] = ["film1", "film2", "film3", "film4", "film5", "film6", "film7"]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,19 +40,20 @@ class MoviesCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return movies.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
+        
         // Configure the cell
     
         return cell
