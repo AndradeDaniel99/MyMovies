@@ -27,8 +27,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
         return title
     }()
     
-    func setupCell(moviePoster: URL?, title: String){
-        self.moviePoster.kf.setImage(with: moviePoster)
+    func setupCell(moviePoster: String, title: String){
+        let url = URL.init(string: moviePoster)
+        self.moviePoster.kf.setImage(with: url)
         self.movieTitle.text = title
         
         setupViewHierarchy()

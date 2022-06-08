@@ -9,21 +9,34 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class MoviesCollectionViewController: UICollectionViewController {
+class MoviesCollectionViewController: UICollectionViewController, MovieManagerDelegate {
     
     
-    let movies:[String] = ["film1", "film2", "film3", "film4", "film5", "film6", "film7"]
+    init() {
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
     
-
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    var movieManager = MovieManager()
+    
+    var movies: [Movie] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        movieManager.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
+        movieManager.fetchMovie()
         // Do any additional setup after loading the view.
     }
 
@@ -55,7 +68,7 @@ class MoviesCollectionViewController: UICollectionViewController {
             return UICollectionViewCell()
         }
     
-        
+        cell.setupCell(moviePoster: self.movies[indexPath.item].image, title: self.movies[indexPath.item].title)
         
         // Configure the cell
     
@@ -92,5 +105,15 @@ class MoviesCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+    func didUpdateMovie(_ movieManager: MovieManager, movie: MovieData) {
+        DispatchQueue.main.async {
+            self.movies = movie.items
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
 
 }
