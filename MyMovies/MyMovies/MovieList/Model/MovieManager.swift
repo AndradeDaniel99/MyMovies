@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+struct MovieManager {
+    
+    let url = "https://imdb-api.com/en/API/MostPopularMovies/k_4mjiwsfg"
+    
+    func fetchMovie(){
+        performRequest(urlString: url)
+    }
+    
+    func performRequest(urlString: String){
+        
+    }
+    
+}
