@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5DEC8A016DA5C1791ECC548A /* Pods_MyMovies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EA03D0641BE7A92AE144DB /* Pods_MyMovies.framework */; };
 		DF40899F284FF47C00D088B5 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40899E284FF47C00D088B5 /* MovieCollectionViewCell.swift */; };
+		DF4089A828502D6100D088B5 /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4089A728502D6100D088B5 /* MovieManager.swift */; };
 		DFA8EE4D284AE453000E5A39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8EE4C284AE453000E5A39 /* AppDelegate.swift */; };
 		DFA8EE4F284AE453000E5A39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8EE4E284AE453000E5A39 /* SceneDelegate.swift */; };
 		DFA8EE51284AE453000E5A39 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8EE50284AE453000E5A39 /* MovieListViewController.swift */; };
@@ -23,6 +24,7 @@
 		99F0D191969BF204F0D9A0D7 /* Pods-MyMovies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMovies.release.xcconfig"; path = "Target Support Files/Pods-MyMovies/Pods-MyMovies.release.xcconfig"; sourceTree = "<group>"; };
 		D0EA03D0641BE7A92AE144DB /* Pods_MyMovies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMovies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF40899E284FF47C00D088B5 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		DF4089A728502D6100D088B5 /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 		DFA8EE49284AE453000E5A39 /* MyMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA8EE4C284AE453000E5A39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFA8EE4E284AE453000E5A39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +54,6 @@
 				770BEBB356423B7516A92329 /* Pods-MyMovies.debug.xcconfig */,
 				99F0D191969BF204F0D9A0D7 /* Pods-MyMovies.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -62,6 +63,14 @@
 				D0EA03D0641BE7A92AE144DB /* Pods_MyMovies.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF4089A628502D4A00D088B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF4089A728502D6100D088B5 /* MovieManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DFA8EE40284AE453000E5A39 = {
@@ -87,7 +96,6 @@
 			children = (
 				DFA8EE5A284AE458000E5A39 /* Info.plist */,
 				DFA8EE60284AE674000E5A39 /* Resources */,
-				DFB40B2E284ED52700B37A5A /* MovieAPI */,
 				DFA8EE62284AE716000E5A39 /* MovieList */,
 			);
 			path = MyMovies;
@@ -116,6 +124,7 @@
 		DFA8EE62284AE716000E5A39 /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
+				DF4089A628502D4A00D088B5 /* Model */,
 				DFA8EE63284AE75D000E5A39 /* View */,
 				DFA8EE61284AE693000E5A39 /* Controller */,
 			);
@@ -129,13 +138,6 @@
 				DF40899E284FF47C00D088B5 /* MovieCollectionViewCell.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		DFB40B2E284ED52700B37A5A /* MovieAPI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MovieAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +256,7 @@
 			files = (
 				DFA8EE51284AE453000E5A39 /* MovieListViewController.swift in Sources */,
 				DFB40B2D284E9C9500B37A5A /* MoviesCollectionViewController.swift in Sources */,
+				DF4089A828502D6100D088B5 /* MovieManager.swift in Sources */,
 				DFA8EE65284AE77D000E5A39 /* MovieListView.swift in Sources */,
 				DF40899F284FF47C00D088B5 /* MovieCollectionViewCell.swift in Sources */,
 				DFA8EE4D284AE453000E5A39 /* AppDelegate.swift in Sources */,
