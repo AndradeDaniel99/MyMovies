@@ -15,13 +15,14 @@ class MovieListViewController: UIViewController {
     
     var movieManager = MovieManager()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         movieManager.delegate = self
         movieManager.fetchMovie()
         
-        //let view = UIView()
+        
         view.backgroundColor = .green
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -34,8 +35,17 @@ class MovieListViewController: UIViewController {
         myCollectionView?.dataSource = self
         myCollectionView?.delegate = self
         view.addSubview(myCollectionView ?? UICollectionView())
+        adicionarConstraints()
         
-        self.view = view
+    }
+    
+    
+    func adicionarConstraints(){
+        myCollectionView?.translatesAutoresizingMaskIntoConstraints = false
+        myCollectionView?.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        myCollectionView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        myCollectionView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        myCollectionView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
     
     
