@@ -12,6 +12,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     let moviePoster: UIImageView = {
         let imagem:UIImageView = UIImageView()
+        imagem.contentMode = .scaleAspectFit
         imagem.translatesAutoresizingMaskIntoConstraints = false
         return imagem
     }()
@@ -21,7 +22,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
         title.font.withSize(18)
         title.textAlignment = .center
         title.numberOfLines = 2
-        title.backgroundColor = .gray.withAlphaComponent(0.5)
+        title.textColor = .black
+        title.backgroundColor = .blue.withAlphaComponent(0.5)
         
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
@@ -46,7 +48,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         moviePoster.topAnchor.constraint(equalTo: topAnchor).isActive = true
         moviePoster.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         moviePoster.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        moviePoster.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        //moviePoster.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
         movieTitle.topAnchor.constraint(equalTo: moviePoster.bottomAnchor).isActive = true
         movieTitle.leadingAnchor.constraint(equalTo: moviePoster.leadingAnchor).isActive = true

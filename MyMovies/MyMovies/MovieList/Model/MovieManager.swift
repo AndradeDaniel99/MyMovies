@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MovieManagerDelegate {
-    func didUpdateMovie(_ movieManager: MovieManager, movie: MovieData)
+    func didUpdateMovie(_ movieManager: MovieManager, movie: [Movie])
     func didFailWithError(error: Error)
 }
 
@@ -37,7 +37,7 @@ struct MovieManager {
                 
                 if let safeData = data {
                     if let movie = self.parseJSON(safeData){
-                        self.delegate?.didUpdateMovie(self, movie: movie)
+                        self.delegate?.didUpdateMovie(self, movie: movie.items)
                     }
                 }
                 

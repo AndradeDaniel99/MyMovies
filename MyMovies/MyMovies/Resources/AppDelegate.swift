@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             
             window = UIWindow(frame: UIScreen.main.bounds)
-            window?.rootViewController = MoviesCollectionViewController()
+            window?.rootViewController = MovieListViewController()
             window?.makeKeyAndVisible()
             
             return true
