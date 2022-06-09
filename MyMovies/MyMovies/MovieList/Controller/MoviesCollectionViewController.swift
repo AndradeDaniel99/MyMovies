@@ -9,8 +9,9 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class MoviesCollectionViewController: UICollectionViewController, MovieManagerDelegate {
+class MoviesCollectionViewController: UICollectionViewController {
     
+    // MARK: - inits
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -20,11 +21,13 @@ class MoviesCollectionViewController: UICollectionViewController, MovieManagerDe
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - atributes
     
     var movieManager = MovieManager()
     
     var movies: [Movie] = []
     
+    // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +73,7 @@ class MoviesCollectionViewController: UICollectionViewController, MovieManagerDe
     
         cell.setupCell(moviePoster: self.movies[indexPath.item].image, title: self.movies[indexPath.item].title)
         
+        print(cell.movieTitle.text!)
         // Configure the cell
     
         return cell
@@ -106,6 +110,14 @@ class MoviesCollectionViewController: UICollectionViewController, MovieManagerDe
     }
     */
     
+    
+
+}
+
+// MARK: - MovieManagerDelegate
+
+extension MoviesCollectionViewController: MovieManagerDelegate {
+    
     func didUpdateMovie(_ movieManager: MovieManager, movie: MovieData) {
         DispatchQueue.main.async {
             self.movies = movie.items
@@ -115,5 +127,4 @@ class MoviesCollectionViewController: UICollectionViewController, MovieManagerDe
     func didFailWithError(error: Error) {
         print(error)
     }
-
 }
