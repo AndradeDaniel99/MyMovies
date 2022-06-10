@@ -23,7 +23,7 @@ class MovieListViewController: UIViewController {
         movieManager.fetchMovie()
         
         
-        view.backgroundColor = .green
+        view.backgroundColor = .white
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
@@ -31,7 +31,7 @@ class MovieListViewController: UIViewController {
         
         myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         myCollectionView?.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-        myCollectionView?.backgroundColor = UIColor.blue
+        myCollectionView?.backgroundColor = .white
         myCollectionView?.dataSource = self
         myCollectionView?.delegate = self
         view.addSubview(myCollectionView ?? UICollectionView())
