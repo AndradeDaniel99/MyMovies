@@ -42,10 +42,10 @@ class MovieListViewController: UIViewController {
     
     func adicionarConstraints(){
         myCollectionView?.translatesAutoresizingMaskIntoConstraints = false
-        myCollectionView?.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        myCollectionView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        myCollectionView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        myCollectionView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        myCollectionView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        myCollectionView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        myCollectionView?.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        myCollectionView?.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
     
     
