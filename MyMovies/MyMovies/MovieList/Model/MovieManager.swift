@@ -16,10 +16,12 @@ struct MovieManager {
     
     var delegate: MovieManagerDelegate?
     
-    let url = "https://imdb-api.com/en/API/MostPopularMovies/k_4mjiwsfg"
+    let url = "https://imdb-api.com/API/AdvancedSearch/k_4mjiwsfg?groups=top_100"
+    let params = "&count=15&start=1"
     
     func fetchMovie(){
-        performRequest(with: url)
+        let completeUrl = url+params
+        performRequest(with: completeUrl)
     }
     
     func performRequest(with urlString: String){

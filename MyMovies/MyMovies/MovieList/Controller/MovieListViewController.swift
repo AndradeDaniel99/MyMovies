@@ -11,7 +11,7 @@ class MovieListViewController: UIViewController {
 
     var myCollectionView:UICollectionView?
     
-    var movies: [Movie] = [Movie(title: "teste", image: "teste")]
+    var movies: [Movie] = []
     
     var movieManager = MovieManager()
     
