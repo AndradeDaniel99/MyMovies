@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieListViewController: UIViewController {
     
@@ -17,6 +18,9 @@ class MovieListViewController: UIViewController {
     
     var movieManager = MovieManager()
     
+    var pagination = 1
+    
+    
     
     // MARK: - view lifecycle
     
@@ -24,7 +28,7 @@ class MovieListViewController: UIViewController {
         super.viewDidLoad()
         
         movieManager.delegate = self
-        movieManager.fetchMovie()
+        movieManager.fetchMovie(String(1))
         
         
         view.backgroundColor = .white
@@ -53,7 +57,10 @@ class MovieListViewController: UIViewController {
     }
     
     
+    
 }
+
+
 
 
 // MARK: - UICollectionViewDataSource
@@ -67,7 +74,10 @@ extension MovieListViewController: UICollectionViewDataSource {
         guard let myCell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
-        myCell.setupCell(moviePoster: movies[indexPath.item].image,title: movies[indexPath.item].title)
+        let imageUrl = URL.init(string: movies[indexPath.item].image)
+        myCell.moviePoster.kf.setImage(with: imageUrl)
+        myCell.setupCell(title: movies[indexPath.item].title)
+        
         
         return myCell
     }
@@ -81,6 +91,13 @@ extension MovieListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        print("User tapped on item \(indexPath.row)")
     }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if(scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)){
+            pagination+=15
+            movieManager.fetchMovie(String(pagination))
+            }
+    }
 }
 
 
@@ -90,7 +107,7 @@ extension MovieListViewController: MovieManagerDelegate {
     
     func updateMovies(movie: [Movie]) {
         DispatchQueue.main.async {
-            self.movies = movie
+            self.movies += movie
             self.myCollectionView?.reloadData()
             print(self.movies[0].title)
         }

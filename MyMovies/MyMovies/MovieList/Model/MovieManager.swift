@@ -20,8 +20,8 @@ struct MovieManager {
     let paginationParam: String = String(1)
     let params = "&count=15&start="
     
-    func fetchMovie(){
-        let completeUrl = url+params+paginationParam
+    func fetchMovie(_ pagination: String = String(1)){
+        let completeUrl = url+params+pagination
         performRequest(with: completeUrl)
     }
     
