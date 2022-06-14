@@ -8,6 +8,8 @@
 import UIKit
 
 class MovieListViewController: UIViewController {
+    
+    // MARK: - Atributes
 
     var myCollectionView:UICollectionView?
     
@@ -15,6 +17,8 @@ class MovieListViewController: UIViewController {
     
     var movieManager = MovieManager()
     
+    
+    // MARK: - view lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +39,12 @@ class MovieListViewController: UIViewController {
         myCollectionView?.dataSource = self
         myCollectionView?.delegate = self
         view.addSubview(myCollectionView ?? UICollectionView())
-        adicionarConstraints()
+        addConstraints()
         
     }
     
     
-    func adicionarConstraints(){
+    func addConstraints(){
         myCollectionView?.translatesAutoresizingMaskIntoConstraints = false
         myCollectionView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         myCollectionView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -50,6 +54,9 @@ class MovieListViewController: UIViewController {
     
     
 }
+
+
+// MARK: - UICollectionViewDataSource
 
 extension MovieListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -66,6 +73,9 @@ extension MovieListViewController: UICollectionViewDataSource {
     }
 }
 
+
+// MARK: - UICollectionViewDelegate
+
 extension MovieListViewController: UICollectionViewDelegate {
  
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -73,6 +83,8 @@ extension MovieListViewController: UICollectionViewDelegate {
     }
 }
 
+
+// MARK: - MovieManagerDelegate
 
 extension MovieListViewController: MovieManagerDelegate {
     
