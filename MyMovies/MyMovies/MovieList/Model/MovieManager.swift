@@ -17,10 +17,11 @@ struct MovieManager {
     var delegate: MovieManagerDelegate?
     
     let url = "https://imdb-api.com/API/AdvancedSearch/k_4mjiwsfg?groups=top_100"
-    let params = "&count=15&start=1"
+    let paginationParam: String = String(1)
+    let params = "&count=15&start="
     
     func fetchMovie(){
-        let completeUrl = url+params
+        let completeUrl = url+params+paginationParam
         performRequest(with: completeUrl)
     }
     
@@ -39,7 +40,7 @@ struct MovieManager {
                 
                 if let safeData = data {
                     if let movie = self.parseJSON(safeData){
-                        self.delegate?.didUpdateMovie(self, movie: movie.items)
+                        self.delegate?.didUpdateMovie(self, movie: movie.results)
                     }
                 }
                 
@@ -57,7 +58,7 @@ struct MovieManager {
         do {
             let decodeData = try decoder.decode(MovieData.self, from: movieData)
             
-            let movieData = MovieData(items: decodeData.items)
+            let movieData = MovieData(results: decodeData.results)
             return movieData
             
             
