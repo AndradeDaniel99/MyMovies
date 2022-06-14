@@ -16,8 +16,22 @@ class MovieDetailsViewController {
     }
     
     func showDetails(_ movie: Movie, handler: @escaping (UIAlertAction) -> Void){
-        let alert = UIAlertController(title: movie.title, message: movie.details(), preferredStyle: .alert)
+        let title = movie.title+" "+movie.description
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
 
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.left
+        
+        let attributedMessageText = NSMutableAttributedString(
+            string: movie.details(),
+            attributes: [
+                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)
+            ]
+        )
+        
+        alert.setValue(attributedMessageText, forKey: "attributedMessage")
+        
         let backButton = UIAlertAction(title: "Back", style: .cancel)
         alert.addAction(backButton)
         

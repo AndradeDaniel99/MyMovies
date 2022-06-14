@@ -26,7 +26,17 @@ struct Movie: Decodable {
     let stars: String // leonardo dicaprio, joel santana, tom cruise
     
     func details() -> String {
-        return " "
+        let details: String = """
+                            
+                            run time: \(runtimeStr)
+                            
+                            genres: \(genres)
+                            
+                            plot: \(plot)
+                            
+                            stars: \(stars)
+                            """
+        return details
     }
     
 }

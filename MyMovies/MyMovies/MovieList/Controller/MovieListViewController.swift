@@ -78,9 +78,33 @@ extension MovieListViewController: UICollectionViewDataSource {
         myCell.moviePoster.kf.setImage(with: imageUrl)
         myCell.setupCell(title: movies[indexPath.item].title)
         
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(showDetails(_:)))
+        myCell.addGestureRecognizer(longPress)
         
         return myCell
     }
+    
+    
+    @objc func showDetails(_ gesture: UILongPressGestureRecognizer){
+        
+        // checagem necessaria para realizar o metodo somente no comeco do gesto
+        if gesture.state == .began {
+            
+            // a gesture view precisa ser tratada como uma celula da tableview,
+            // indexpath foi recebido da tableview,
+            // refeicao é o objeto refeicao na posicao da celula que foi pressionada
+            let cell = gesture.view as! UICollectionViewCell
+            guard let indexPath = myCollectionView?.indexPath(for: cell) else { return }
+            let movie = movies[indexPath.item]
+            
+            MovieDetailsViewController(controller: self).showDetails(movie, handler: { alert in
+                print("adicionou um favorito")
+            })
+            
+        }
+        
+    }
+    
 }
 
 
