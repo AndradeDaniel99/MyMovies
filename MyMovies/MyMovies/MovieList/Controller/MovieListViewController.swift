@@ -88,7 +88,7 @@ extension MovieListViewController: UICollectionViewDelegate {
 
 extension MovieListViewController: MovieManagerDelegate {
     
-    func didUpdateMovie(_ movieManager: MovieManager, movie: [Movie]) {
+    func updateMovies(movie: [Movie]) {
         DispatchQueue.main.async {
             self.movies = movie
             self.myCollectionView?.reloadData()
