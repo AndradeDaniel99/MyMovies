@@ -20,6 +20,7 @@ class MovieListViewController: UIViewController {
     
     var pagination = 1
     
+    let itemsPerRow: CGFloat = 3
     
     
     // MARK: - view lifecycle
@@ -34,8 +35,10 @@ class MovieListViewController: UIViewController {
         view.backgroundColor = .white
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 120, height: 200)
+        let paddingSpace = layout.sectionInset.left*(itemsPerRow)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        layout.itemSize = CGSize(width: widthPerItem, height: 200)
         
         myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         myCollectionView?.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
@@ -54,34 +57,6 @@ class MovieListViewController: UIViewController {
         myCollectionView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         myCollectionView?.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         myCollectionView?.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-    }
-    
-    
-    
-}
-
-
-
-
-// MARK: - UICollectionViewDataSource
-
-extension MovieListViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let myCell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as? MovieCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        let imageUrl = URL.init(string: movies[indexPath.item].image)
-        myCell.moviePoster.kf.setImage(with: imageUrl)
-        myCell.setupCell(title: movies[indexPath.item].title)
-        
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(showDetails(_:)))
-        myCell.addGestureRecognizer(longPress)
-        
-        return myCell
     }
     
     
@@ -104,6 +79,37 @@ extension MovieListViewController: UICollectionViewDataSource {
         }
         
     }
+    
+    
+    
+    
+}
+
+
+
+
+// MARK: - UICollectionViewDataSource
+
+extension MovieListViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let myCell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as? MovieCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        myCell.setupCell(posterUrl: movies[indexPath.item].image, title: movies[indexPath.item].title)
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(showDetails(_:)))
+        myCell.addGestureRecognizer(longPress)
+        
+        return myCell
+    }
+    
+    
+    
     
 }
 
@@ -132,6 +138,7 @@ extension MovieListViewController: MovieManagerDelegate {
     func updateMovies(movie: [Movie]) {
         DispatchQueue.main.async {
             self.movies += movie
+            
             self.myCollectionView?.reloadData()
             print(self.movies[0].title)
         }

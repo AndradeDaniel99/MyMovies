@@ -5,7 +5,7 @@
 //  Created by Daniel de Andrade Souza on 08/06/22.
 //
 
-import Foundation
+import UIKit
 
 
 struct MovieData: Decodable {
@@ -28,13 +28,15 @@ struct Movie: Decodable {
     func details() -> String {
         let details: String = """
                             
-                            run time: \(runtimeStr)
+                            Runtime: \(runtimeStr)
                             
-                            genres: \(genres)
+                            Genres: \(genres)
                             
-                            plot: \(plot)
+                            Plot:
+                            \(plot)
                             
-                            stars: \(stars)
+                            Stars:
+                            \(stars)
                             """
         return details
     }
