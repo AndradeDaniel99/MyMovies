@@ -32,7 +32,7 @@ class MovieListViewController: UIViewController {
         super.viewDidLoad()
         
         movieManager.delegate = self
-        movieManager.fetchMovie(String(1))
+        movieManager.fetchMovie()
         
         view.backgroundColor = .white
         setupCollectionView()
