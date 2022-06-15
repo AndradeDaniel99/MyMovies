@@ -8,7 +8,6 @@
 import UIKit
 
 class MovieDetailsViewController {
-
     let controller: UIViewController
     
     init(controller: UIViewController){
@@ -18,7 +17,6 @@ class MovieDetailsViewController {
     func showDetails(_ movie: Movie, handler: @escaping (UIAlertAction) -> Void){
         let title = movie.title+" "+movie.description
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.left
         

@@ -37,14 +37,11 @@ class MovieManager {
                     self.delegate?.didFailWithError(error: error!)
                     return
                 }
-                
                 if let safeData = data {
                     if let movie = self.parseJSON(safeData){
                         self.delegate?.updateMovies(movie: movie.results)
                     }
                 }
-                
-                
             }
             
             // 4. Start the task
@@ -57,16 +54,11 @@ class MovieManager {
         
         do {
             let decodeData = try decoder.decode(MovieData.self, from: movieData)
-            
             let movieData = MovieData(results: decodeData.results)
             return movieData
-            
-            
         } catch  {
             delegate?.didFailWithError(error: error)
             return nil
         }
     }
-    
-    
 }

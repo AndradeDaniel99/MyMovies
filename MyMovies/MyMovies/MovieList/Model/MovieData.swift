@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 struct MovieData: Decodable {
     let results: [Movie]
     
@@ -40,6 +39,4 @@ struct Movie: Decodable {
                             """
         return details
     }
-    
 }
-

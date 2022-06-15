@@ -8,7 +8,6 @@
 import UIKit
 import Kingfisher
 
-
 class MovieListViewController: UIViewController {
     
     // MARK: - Atributes
@@ -21,8 +20,11 @@ class MovieListViewController: UIViewController {
     
     var pagination = 1
     
-    var collectionViewCell: [MovieCollectionViewCell] = []
+    //var collectionViewCell: [MovieCollectionViewCell] = []
     
+    var isLoading = false
+    
+    var loadingView: LoadingReusableView?
     
     // MARK: - view lifecycle
     
@@ -32,11 +34,9 @@ class MovieListViewController: UIViewController {
         movieManager.delegate = self
         movieManager.fetchMovie(String(1))
         
-        view.backgroundColor = .green
+        view.backgroundColor = .white
         setupCollectionView()
     }
-    
-    
     
     func setupCollectionView(){
         let screenSize = UIScreen.main.bounds
@@ -53,7 +53,6 @@ class MovieListViewController: UIViewController {
         view.addSubview(myCollectionView ?? UICollectionView())
         
         setupviewsConstraints()
-        
     }
     
     func setupviewsConstraints(){
@@ -70,33 +69,17 @@ class MovieListViewController: UIViewController {
         myCollectionView?.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
     
-    
     @objc func showDetails(_ gesture: UILongPressGestureRecognizer){
-        
-        // checagem necessaria para realizar o metodo somente no comeco do gesto
         if gesture.state == .began {
-            
-            // a gesture view precisa ser tratada como uma celula da tableview,
-            // indexpath foi recebido da tableview,
-            // refeicao é o objeto refeicao na posicao da celula que foi pressionada
             let cell = gesture.view as! UICollectionViewCell
             guard let indexPath = myCollectionView?.indexPath(for: cell) else { return }
             let movie = movies[indexPath.item]
-            
             MovieDetailsViewController(controller: self).showDetails(movie, handler: { alert in
                 print("adicionou um favorito")
             })
-            
         }
-        
     }
-    
-    
-    
-    
 }
-
-
 
 
 // MARK: - UICollectionViewDataSource
@@ -113,18 +96,12 @@ extension MovieListViewController: UICollectionViewDataSource {
         
         myCell.setupCell(posterUrl: movies[indexPath.item].image)
         
-        
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(showDetails(_:)))
         myCell.addGestureRecognizer(longPress)
         
         return myCell
     }
-    
-    
-    
-    
 }
-
 
 // MARK: - UICollectionViewDelegate
 
@@ -134,7 +111,14 @@ extension MovieListViewController: UICollectionViewDelegate {
        print("User tapped on item \(indexPath.row)")
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        if(scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)-55){
+//            pagination+=15
+//            movieManager.fetchMovie(String(pagination))
+//            }
+//    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if(scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)){
             pagination+=15
             movieManager.fetchMovie(String(pagination))
@@ -159,4 +143,48 @@ extension MovieListViewController: MovieManagerDelegate {
     func didFailWithError(error: Error) {
         print(error)
     }
+}
+
+// MARK: -UICollectionViewDelegateFlowLayout
+
+extension MovieListViewController: UICollectionViewDelegateFlowLayout {
+    
+    // return the size for the Loading View when it’s time to show it.
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if self.isLoading {
+            return CGSize.zero
+        } else {
+            return CGSize(width: collectionView.bounds.size.width, height: 55)
+        }
+    }
+    
+    
+    // Set the reusable view in the CollectionView footer
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionFooter {
+                   let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "loadingresuableviewid", for: indexPath) as! LoadingReusableView
+                   loadingView = aFooterView
+                   loadingView?.backgroundColor = UIColor.clear
+                   return aFooterView
+               }
+               return UICollectionReusableView()
+    }
+    
+    
+    // start and stop the activityIndicator‘s animation when the footer appears and disappears, respectively.
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+            if elementKind == UICollectionView.elementKindSectionFooter {
+                self.loadingView?.activityIndicator.startAnimating()
+            }
+        }
+
+        func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+            if elementKind == UICollectionView.elementKindSectionFooter {
+                self.loadingView?.activityIndicator.stopAnimating()
+            }
+        }
+    
 }

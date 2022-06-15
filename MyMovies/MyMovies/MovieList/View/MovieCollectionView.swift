@@ -20,8 +20,8 @@ class MovieCollectionView: UICollectionView {
     
     func setupCollectionView() {
         register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
+        let loadingReusableNib = UINib(nibName: "LoadingReusableView", bundle: nil)
+        register(loadingReusableNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "loadingresuableviewid")
         backgroundColor = UIColor.white
     }
-    
-
 }
