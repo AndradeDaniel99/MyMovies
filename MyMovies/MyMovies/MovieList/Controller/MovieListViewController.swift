@@ -12,7 +12,7 @@ class MovieListViewController: UIViewController {
     
     // MARK: - Atributes
 
-    var myCollectionView:UICollectionView?
+    var myCollectionView:MovieCollectionView?
     
     var movies: [Movie] = []
     
@@ -31,32 +31,21 @@ class MovieListViewController: UIViewController {
         movieManager.delegate = self
         movieManager.fetchMovie(String(1))
         
-        
         view.backgroundColor = .white
         
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let paddingSpace = layout.sectionInset.left*(itemsPerRow)
-        let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow
-        layout.itemSize = CGSize(width: widthPerItem, height: 200)
-        
-        myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        myCollectionView?.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-        myCollectionView?.backgroundColor = .white
-        myCollectionView?.dataSource = self
-        myCollectionView?.delegate = self
-        view.addSubview(myCollectionView ?? UICollectionView())
-        addConstraints()
-        
+        setupCollectionView()
     }
     
     
-    func addConstraints(){
-        myCollectionView?.translatesAutoresizingMaskIntoConstraints = false
-        myCollectionView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        myCollectionView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        myCollectionView?.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        myCollectionView?.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+    func setupCollectionView(){
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: 120, height: 200)
+        
+        myCollectionView = MovieCollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        myCollectionView?.dataSource = self
+        myCollectionView?.delegate = self
+        view.addSubview(myCollectionView ?? UICollectionView())
     }
     
     

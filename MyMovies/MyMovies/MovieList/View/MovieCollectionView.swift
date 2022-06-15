@@ -21,7 +21,7 @@ class MovieCollectionView: UICollectionView {
     
     func setupCollectionView() {
         register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-        backgroundColor = UIColor.blue
+        backgroundColor = UIColor.white
     }
     
     func adicionarConstraints(){
