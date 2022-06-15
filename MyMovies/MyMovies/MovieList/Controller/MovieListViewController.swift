@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 
+
 class MovieListViewController: UIViewController {
     
     // MARK: - Atributes
@@ -20,7 +21,7 @@ class MovieListViewController: UIViewController {
     
     var pagination = 1
     
-    let itemsPerRow: CGFloat = 3
+    var collectionViewCell: [MovieCollectionViewCell] = []
     
     
     // MARK: - view lifecycle
@@ -31,21 +32,42 @@ class MovieListViewController: UIViewController {
         movieManager.delegate = self
         movieManager.fetchMovie(String(1))
         
-        view.backgroundColor = .white
-        
+        view.backgroundColor = .green
         setupCollectionView()
     }
     
     
+    
     func setupCollectionView(){
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 120, height: 200)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 1, bottom: 10, right: 1)
+        layout.itemSize = CGSize(width: (screenWidth/3)-1, height: screenWidth/2)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
         
         myCollectionView = MovieCollectionView(frame: self.view.frame, collectionViewLayout: layout)
         myCollectionView?.dataSource = self
         myCollectionView?.delegate = self
         view.addSubview(myCollectionView ?? UICollectionView())
+        
+        setupviewsConstraints()
+        
+    }
+    
+    func setupviewsConstraints(){
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.topAnchor.constraint(equalTo:  view.topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        myCollectionView?.translatesAutoresizingMaskIntoConstraints = false
+        myCollectionView?.topAnchor.constraint(equalTo:  view.safeAreaLayoutGuide.topAnchor).isActive = true
+        myCollectionView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        myCollectionView?.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        myCollectionView?.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
     
     
@@ -89,7 +111,8 @@ extension MovieListViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        myCell.setupCell(posterUrl: movies[indexPath.item].image, title: movies[indexPath.item].title)
+        myCell.setupCell(posterUrl: movies[indexPath.item].image)
+        
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(showDetails(_:)))
         myCell.addGestureRecognizer(longPress)
@@ -137,4 +160,3 @@ extension MovieListViewController: MovieManagerDelegate {
         print(error)
     }
 }
-

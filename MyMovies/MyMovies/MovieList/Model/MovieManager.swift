@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol MovieManagerDelegate {
+protocol MovieManagerDelegate: AnyObject {
     func updateMovies(movie: [Movie])
     func didFailWithError(error: Error)
 }
 
-struct MovieManager {
+class MovieManager {
     
-    var delegate: MovieManagerDelegate?
+    weak var delegate: MovieManagerDelegate?
     
     let url = "https://imdb-api.com/API/AdvancedSearch/k_4mjiwsfg?groups=top_100"
     let paginationParam: String = String(1)

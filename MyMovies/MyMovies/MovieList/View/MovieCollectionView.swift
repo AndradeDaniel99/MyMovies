@@ -12,7 +12,6 @@ class MovieCollectionView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         setupCollectionView()
-        adicionarConstraints()
     }
         
     required init?(coder: NSCoder) {
@@ -23,17 +22,6 @@ class MovieCollectionView: UICollectionView {
         register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
         backgroundColor = UIColor.white
     }
-    
-    func adicionarConstraints(){
-        guard let superview = superview else { return }
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo:  superview.safeAreaLayoutGuide.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor).isActive = true
-    }
-    
     
 
 }
