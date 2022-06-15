@@ -19,6 +19,21 @@ class MovieCollectionView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupCollectionView() {
+        register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
+        backgroundColor = UIColor.blue
+    }
+    
+    func adicionarConstraints(){
+        guard let superview = superview else { return }
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        topAnchor.constraint(equalTo:  superview.safeAreaLayoutGuide.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor).isActive = true
+    }
+    
     
 
 }
