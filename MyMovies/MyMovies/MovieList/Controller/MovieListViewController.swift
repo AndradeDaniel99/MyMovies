@@ -16,11 +16,9 @@ class MovieListViewController: UIViewController {
     
     var movies: [Movie] = []
     
-    var movieManager = MovieManager()
+    let movieManager = MovieManager()
     
     var pagination = 1
-    
-    //var collectionViewCell: [MovieCollectionViewCell] = []
     
     var isLoading = false
     
@@ -37,6 +35,8 @@ class MovieListViewController: UIViewController {
         view.backgroundColor = .white
         setupCollectionView()
     }
+    
+    // MARK: - Methods
     
     func setupCollectionView(){
         let screenSize = UIScreen.main.bounds
@@ -75,10 +75,11 @@ class MovieListViewController: UIViewController {
             guard let indexPath = myCollectionView?.indexPath(for: cell) else { return }
             let movie = movies[indexPath.item]
             MovieDetailsViewController(controller: self).showDetails(movie, handler: { alert in
-                print("adicionou um favorito")
+                print("item \(movie.title) favorited")
             })
         }
     }
+
 }
 
 
@@ -122,7 +123,7 @@ extension MovieListViewController: UICollectionViewDelegate {
         if(scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)){
             pagination+=15
             movieManager.fetchMovie(String(pagination))
-            }
+        }
     }
 }
 
@@ -134,7 +135,6 @@ extension MovieListViewController: MovieManagerDelegate {
     func updateMovies(movie: [Movie]) {
         DispatchQueue.main.async {
             self.movies += movie
-            
             self.myCollectionView?.reloadData()
             print(self.movies[0].title)
         }
@@ -164,10 +164,10 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionFooter {
-                   let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "loadingresuableviewid", for: indexPath) as! LoadingReusableView
-                   loadingView = aFooterView
+                   let loadingFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "loadingresuableviewid", for: indexPath) as! LoadingReusableView
+                   loadingView = loadingFooterView
                    loadingView?.backgroundColor = UIColor.clear
-                   return aFooterView
+                   return loadingFooterView
                }
                return UICollectionReusableView()
     }

@@ -12,7 +12,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     let moviePoster: UIImageView = {
         let imagem:UIImageView = UIImageView()
-        imagem.contentMode = .scaleAspectFit
+        imagem.contentMode = .scaleToFill
         imagem.translatesAutoresizingMaskIntoConstraints = false
         return imagem
     }()
@@ -31,8 +31,11 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     func setupCell(posterUrl: String){
         //self.movieTitle.text = title
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 300, height: 445))
         let url = URL.init(string: posterUrl)
-        self.moviePoster.kf.setImage(with: url)
+        self.moviePoster.kf.indicatorType = .activity
+        self.moviePoster.kf.setImage(with: url, options: [.processor(processor)])
+        //self.moviePoster.image?.jpegData(compressionQuality: 0.5)
         setupViewHierarchy()
         setupConstraints()
         configureView()
