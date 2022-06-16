@@ -28,11 +28,9 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .white
         movieManager.delegate = self
         movieManager.fetchMovie()
-        
-        view.backgroundColor = .white
         setupCollectionView()
     }
     
