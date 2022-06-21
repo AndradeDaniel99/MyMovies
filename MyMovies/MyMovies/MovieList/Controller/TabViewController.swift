@@ -16,8 +16,8 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         let movieListVC = UINavigationController(rootViewController: MovieListViewController())
         let favoritesVC = UINavigationController(rootViewController: FavoritesViewController())
 
-        movieListVC.title = "Movies"
-        favoritesVC.title = "Favorites"
+        movieListVC.title = "Popular Movies"
+        favoritesVC.title = "My Movies"
 
         self.setViewControllers([movieListVC, favoritesVC], animated: false)
 

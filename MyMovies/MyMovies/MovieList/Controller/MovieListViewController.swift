@@ -28,7 +28,7 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Movies"
+        title = "Popular Movies"
         view.backgroundColor = .white
         movieManager.delegate = self
         movieManager.fetchMovie()
