@@ -35,7 +35,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
         let url = URL.init(string: posterUrl)
         self.moviePoster.kf.indicatorType = .activity
         self.moviePoster.kf.setImage(with: url, options: [.processor(processor)])
-        //self.moviePoster.image?.jpegData(compressionQuality: 0.5)
         setupViewHierarchy()
         setupConstraints()
         configureView()

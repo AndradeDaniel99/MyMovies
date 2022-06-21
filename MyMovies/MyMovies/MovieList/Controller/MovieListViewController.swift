@@ -28,6 +28,7 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Movies"
         view.backgroundColor = .white
         movieManager.delegate = self
         movieManager.fetchMovie()
@@ -37,8 +38,7 @@ class MovieListViewController: UIViewController {
     // MARK: - Methods
     
     func setupCollectionView(){
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
+        let screenWidth = UIScreen.main.bounds.size.width
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 1, bottom: 10, right: 1)
         layout.itemSize = CGSize(width: (screenWidth/3)-1, height: screenWidth/2)
@@ -49,22 +49,15 @@ class MovieListViewController: UIViewController {
         myCollectionView?.dataSource = self
         myCollectionView?.delegate = self
         view.addSubview(myCollectionView ?? UICollectionView())
-        
         setupviewsConstraints()
     }
     
     func setupviewsConstraints(){
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.topAnchor.constraint(equalTo:  view.topAnchor).isActive = true
-        view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
         myCollectionView?.translatesAutoresizingMaskIntoConstraints = false
-        myCollectionView?.topAnchor.constraint(equalTo:  view.safeAreaLayoutGuide.topAnchor).isActive = true
-        myCollectionView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        myCollectionView?.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        myCollectionView?.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        myCollectionView?.topAnchor.constraint(equalTo:  view.topAnchor).isActive = true
+        myCollectionView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        myCollectionView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        myCollectionView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
     
     @objc func showDetails(_ gesture: UILongPressGestureRecognizer){
@@ -97,7 +90,6 @@ extension MovieListViewController: UICollectionViewDataSource {
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(showDetails(_:)))
         myCell.addGestureRecognizer(longPress)
-        
         return myCell
     }
 }
