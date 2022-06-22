@@ -7,13 +7,10 @@
 
 import UIKit
 
-protocol FavoritesDelegate: AnyObject {
-    func favoriteHandler(movie: Movie)
-}
+
 
 class FavoritesViewController: UIViewController {
 
-    weak var delegate: FavoritesDelegate?
     
     var myMovies: [Movie] = []
     
@@ -22,5 +19,12 @@ class FavoritesViewController: UIViewController {
         view.backgroundColor = .white
         // Do any additional setup after loading the view.
         title = "My Movies"
+    }
+}
+
+extension FavoritesViewController: FavoritesDelegate {
+    func favoriteHandler(movie: Movie){
+        //self.myMovies.append(movie)
+        print("item \(movie.title) favorited")
     }
 }
