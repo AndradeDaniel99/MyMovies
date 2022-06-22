@@ -7,8 +7,16 @@
 
 import UIKit
 
+protocol FavoritesDelegate: AnyObject {
+    func favoriteHandler(movie: Movie)
+}
+
 class FavoritesViewController: UIViewController {
 
+    weak var delegate: FavoritesDelegate?
+    
+    var myMovies: [Movie] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

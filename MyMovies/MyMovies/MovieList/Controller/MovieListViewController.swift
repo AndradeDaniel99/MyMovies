@@ -66,9 +66,13 @@ class MovieListViewController: UIViewController {
             guard let indexPath = myCollectionView?.indexPath(for: cell) else { return }
             let movie = movies[indexPath.item]
             MovieDetailsViewController(controller: self).showDetails(movie, handler: { alert in
-                print("item \(movie.title) favorited")
+                self.favoriteHandler(movie: movie)
             })
         }
+    }
+    
+    func favoriteHandler(movie: Movie){
+        print("item \(movie.title) favorited")
     }
 
 }
@@ -135,7 +139,7 @@ extension MovieListViewController: MovieManagerDelegate {
     }
 }
 
-// MARK: -UICollectionViewDelegateFlowLayout
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     
