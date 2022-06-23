@@ -26,27 +26,5 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         for i in 0..<items.count {
             items[i].image = UIImage(systemName: images[i])
         }
-        
-        
-        
     }
-    
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        let moviesTab = UINavigationController(rootViewController: MoviesViewController())
-//        let moviesTabBarItem = UITabBarItem(title: "Movies", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
-//        moviesTab.tabBarItem = moviesTabBarItem
-//
-//        let favoritesTab = UINavigationController(rootViewController: FavoritesViewController())
-//        let favoritesTabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "star"), selectedImage: UIImage(systemName: "star"))
-//        favoritesTab.tabBarItem = favoritesTabBarItem
-//
-//        self.viewControllers = [moviesTab, favoritesTab]
-//
-//    }
-//
-    
-
 }
