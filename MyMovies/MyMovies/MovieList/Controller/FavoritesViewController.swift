@@ -38,17 +38,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
         view.addSubview(myTableView)
     }
     
-    
-    func addFavorite(movie: Movie){
-        
-        DispatchQueue.main.async {
-            self.teste.append(movie.title)
-            self.myTableView.reloadData()
-            print("item \(movie.title) favorited")
-        }
-        
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         teste.count
     }
@@ -63,4 +52,14 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
+}
+
+extension FavoritesViewController: FavoritesDelegate {
+    func addFavorite(movie: Movie){
+        DispatchQueue.main.async {
+            self.teste.append(movie.title)
+            self.myTableView.reloadData()
+            print("item \(movie.title) favorited")
+        }
+    }
 }

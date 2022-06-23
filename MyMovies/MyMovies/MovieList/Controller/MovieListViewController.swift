@@ -8,6 +8,9 @@
 import UIKit
 import Kingfisher
 
+protocol FavoritesDelegate: AnyObject{
+    func addFavorite(movie: Movie)
+}
 
 class MovieListViewController: UIViewController {
     
@@ -15,7 +18,7 @@ class MovieListViewController: UIViewController {
 
     var myCollectionView:MovieCollectionView?
     
-    let favorites = FavoritesViewController()
+    var favoritesDelegate: FavoritesDelegate?
     
     var movies: [Movie] = []
     
@@ -69,7 +72,7 @@ class MovieListViewController: UIViewController {
             guard let indexPath = myCollectionView?.indexPath(for: cell) else { return }
             let movie = movies[indexPath.item]
             MovieDetailsViewController(controller: self).showDetails(movie, handler: { alert in
-                self.favorites.addFavorite(movie: movie)
+                self.favoritesDelegate?.addFavorite(movie: movie)
             })
         }
     }
