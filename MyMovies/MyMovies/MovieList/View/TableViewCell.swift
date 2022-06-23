@@ -40,30 +40,27 @@ class TableViewCell: UITableViewCell {
         return title
     }()
     
-    func setupCell(posterUrl: String, title: String){
+    func setupCell(title: String){
         self.movieTitle.text = title
-        let processor = DownsamplingImageProcessor(size: CGSize(width: 300, height: 445))
-        let url = URL.init(string: posterUrl)
-        self.moviePoster.kf.indicatorType = .activity
-        self.moviePoster.kf.setImage(with: url, options: [.processor(processor)])
+//        let processor = DownsamplingImageProcessor(size: CGSize(width: 300, height: 445))
+//        let url = URL.init(string: posterUrl)
+//        self.moviePoster.kf.indicatorType = .activity
+//        self.moviePoster.kf.setImage(with: url, options: [.processor(processor)])
         setupViewHierarchy()
         setupConstraints()
         configureView()
     }
     
     func setupViewHierarchy(){
-        addSubview(moviePoster)
+        //addSubview(moviePoster)
         addSubview(movieTitle)
     }
     
     func setupConstraints(){
-        moviePoster.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        moviePoster.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        moviePoster.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        moviePoster.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        //iePoster.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
         movieTitle.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        movieTitle.leadingAnchor.constraint(equalTo: moviePoster.trailingAnchor, constant: 5).isActive = true
+        movieTitle.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         movieTitle.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         movieTitle.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
