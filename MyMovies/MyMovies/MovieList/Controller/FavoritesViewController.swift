@@ -7,10 +7,7 @@
 
 import UIKit
 
-
-
-class FavoritesViewController: UIViewController {
-
+class FavoritesViewController: UITableViewController {
     
     var myMovies: [Movie] = []
     
@@ -20,11 +17,11 @@ class FavoritesViewController: UIViewController {
         // Do any additional setup after loading the view.
         title = "My Movies"
     }
-}
-
-extension FavoritesViewController: FavoritesDelegate {
-    func favoriteHandler(movie: Movie){
-        //self.myMovies.append(movie)
+    
+    func addFavorite(movie: Movie){
+        self.myMovies.append(movie)
+        
         print("item \(movie.title) favorited")
     }
 }
+
