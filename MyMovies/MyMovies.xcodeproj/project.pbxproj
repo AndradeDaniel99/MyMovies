@@ -22,6 +22,7 @@
 		DFA8EE51284AE453000E5A39 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8EE50284AE453000E5A39 /* MovieListViewController.swift */; };
 		DFA8EE56284AE458000E5A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFA8EE55284AE458000E5A39 /* Assets.xcassets */; };
 		DFA8EE59284AE458000E5A39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA8EE57284AE458000E5A39 /* LaunchScreen.storyboard */; };
+		DFEBFE752864E07500ED07B4 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEBFE742864E07500ED07B4 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		DFA8EE55284AE458000E5A39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFA8EE58284AE458000E5A39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFA8EE5A284AE458000E5A39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFEBFE742864E07500ED07B4 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				DF8CDEAF285A5A8D0006D6E6 /* MovieCollectionView.swift */,
 				DF8CDEB7285A786C0006D6E6 /* LoadingReusableView.swift */,
 				DF8CDEB8285A786C0006D6E6 /* LoadingReusableView.xib */,
+				DFEBFE742864E07500ED07B4 /* TableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				DF6370D1285ACA2B00EE649F /* FavoritesViewController.swift in Sources */,
 				DF40899F284FF47C00D088B5 /* MovieCollectionViewCell.swift in Sources */,
 				DFA8EE4D284AE453000E5A39 /* AppDelegate.swift in Sources */,
+				DFEBFE752864E07500ED07B4 /* TableViewCell.swift in Sources */,
 				DF6370CD285AC9E900EE649F /* TabViewController.swift in Sources */,
 				DFA8EE4F284AE453000E5A39 /* SceneDelegate.swift in Sources */,
 			);

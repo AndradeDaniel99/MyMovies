@@ -20,7 +20,6 @@ class FavoritesViewController: UITableViewController {
     
     func addFavorite(movie: Movie){
         self.myMovies.append(movie)
-        
         print("item \(movie.title) favorited")
     }
 }
