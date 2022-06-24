@@ -30,11 +30,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
         myTableView.dataSource = self
         myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         myTableView.backgroundColor = .white
-        myTableView.translatesAutoresizingMaskIntoConstraints = false
-        myTableView.topAnchor.constraint(equalTo:  view.topAnchor).isActive = true
-        myTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        myTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        myTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         view.addSubview(myTableView)
     }
     
