@@ -17,7 +17,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
     
     override func loadView() {
         super.loadView()
-        // Do any additional setup after loading the view.
         title = "My Movies"
         setupTableView()
         movielist.favoritesDelegate = self
@@ -42,7 +41,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        //cell.textLabel?.text = myMovies[indexPath.row].title
         cell.textLabel?.text = myMovies[indexPath.row].title
         
         return cell
