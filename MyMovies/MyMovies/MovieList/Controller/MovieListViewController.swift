@@ -18,7 +18,7 @@ class MovieListViewController: UIViewController {
 
     var myCollectionView:MovieCollectionView?
     
-    var favoritesDelegate: FavoritesDelegate?
+    weak var favoritesDelegate: FavoritesDelegate?
     
     var movies: [Movie] = []
     

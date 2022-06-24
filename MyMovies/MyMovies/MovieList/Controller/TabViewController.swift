@@ -9,18 +9,17 @@ import UIKit
 
 class TabViewController: UITabBarController, UITabBarControllerDelegate {
 
+    
+    let movieListVC = MovieListViewController()
+    let favoritesVC = FavoritesViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-        self.delegate = self
-        let movieListVC = UINavigationController(rootViewController: MovieListViewController())
-        let favoritesVC = UINavigationController(rootViewController: FavoritesViewController())
-
+        movieListVC.favoritesDelegate = favoritesVC
         movieListVC.title = "Popular Movies"
         favoritesVC.title = "My Movies"
-
         self.setViewControllers([movieListVC, favoritesVC], animated: false)
-
         guard let items = self.tabBar.items else { return }
         let images = ["house", "star"]
         for i in 0..<items.count {

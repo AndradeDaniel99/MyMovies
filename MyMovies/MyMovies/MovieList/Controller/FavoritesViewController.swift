@@ -15,11 +15,14 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
     
     let myTableView = UITableView()
     
+    let movielist = MovieListViewController()
+    
     override func loadView() {
         super.loadView()
         // Do any additional setup after loading the view.
         title = "My Movies"
         setupTableView()
+        movielist.favoritesDelegate = self
     }
     
     func setupTableView(){
@@ -28,18 +31,13 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
         let screenHeight = screenSize.height
         myTableView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight);
         myTableView.dataSource = self
-//        myTableView.translatesAutoresizingMaskIntoConstraints = false
-//        myTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//        myTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-//        myTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-//        myTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         myTableView.backgroundColor = .white
         view.addSubview(myTableView)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        teste.count
+        myMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,7 +45,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         //cell.textLabel?.text = myMovies[indexPath.row].title
-        cell.textLabel?.text = teste[indexPath.row]
+        cell.textLabel?.text = myMovies[indexPath.row].title
         
         return cell
     }
@@ -57,7 +55,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
 extension FavoritesViewController: FavoritesDelegate {
     func addFavorite(movie: Movie){
         DispatchQueue.main.async {
-            self.teste.append(movie.title)
+            self.myMovies.append(movie)
             self.myTableView.reloadData()
             print("item \(movie.title) favorited")
         }
