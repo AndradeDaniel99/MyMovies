@@ -11,8 +11,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
     
     var myMovies: [Movie] = []
     
-    var teste = ["1","1","1","1","1"]
-    
     let myTableView = UITableView()
     
     let movielist = MovieListViewController()
@@ -49,7 +47,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
         
         return cell
     }
-    
 }
 
 extension FavoritesViewController: FavoritesDelegate {
