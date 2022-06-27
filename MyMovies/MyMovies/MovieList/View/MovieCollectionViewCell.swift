@@ -31,7 +31,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     func setupCell(posterUrl: String){
         let preUrl = "https://image.tmdb.org/t/p/w342/"
-        let processor = DownsamplingImageProcessor(size: CGSize(width: 300, height: 445))
+        let processor = RoundCornerImageProcessor(cornerRadius: 20)
         let url = URL.init(string: preUrl+posterUrl)
         self.moviePoster.kf.indicatorType = .activity
         self.moviePoster.kf.setImage(with: url, options: [.processor(processor)])
