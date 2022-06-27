@@ -16,12 +16,14 @@ class MovieManager {
     
     weak var delegate: MovieManagerDelegate?
     
-    let url = "https://imdb-api.com/API/AdvancedSearch/k_4mjiwsfg?groups=top_100"  // otherkey: k_99w129a7
-    let paginationParam: String = String(1)
-    let params = "&count=15&start="
+//    let url = "https://imdb-api.com/API/AdvancedSearch/k_4mjiwsfg?groups=top_100"
+//    let paginationParam: String = String(1)
+//    let params = "&count=15&start="
     
-    func fetchMovie(_ pagination: String = String(1)){
-        let completeUrl = url+params+pagination
+    let url = "https://api.themoviedb.org/3/trending/movie/week?api_key=807c1d1c3c58e1ef234880e23ac77137&page="
+    
+    func fetchMovie(_ page: String = String(1)){
+        let completeUrl = url+page
         performRequest(with: completeUrl)
     }
     
@@ -51,7 +53,6 @@ class MovieManager {
     
     func parseJSON(_ movieData: Data) -> MovieData? {
         let decoder = JSONDecoder()
-        
         do {
             let decodeData = try decoder.decode(MovieData.self, from: movieData)
             let movieData = MovieData(results: decodeData.results)

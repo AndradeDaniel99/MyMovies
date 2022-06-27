@@ -21,7 +21,7 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         favoritesNavVC.setViewControllers([favoritesVC], animated: false)
         view.backgroundColor = .red
         movieListVC.favoritesDelegate = favoritesVC
-        movieListVC.title = "Popular Movies"
+        movieListVC.title = "Trending Movies"
         favoritesVC.title = "My Movies"
         self.setViewControllers([movieListNavVC, favoritesNavVC], animated: false)
         guard let items = self.tabBar.items else { return }

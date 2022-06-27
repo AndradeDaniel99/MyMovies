@@ -30,9 +30,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
 //    }()
     
     func setupCell(posterUrl: String){
-        //self.movieTitle.text = title
+        let preUrl = "https://image.tmdb.org/t/p/w342/"
         let processor = DownsamplingImageProcessor(size: CGSize(width: 300, height: 445))
-        let url = URL.init(string: posterUrl)
+        let url = URL.init(string: preUrl+posterUrl)
         self.moviePoster.kf.indicatorType = .activity
         self.moviePoster.kf.setImage(with: url, options: [.processor(processor)])
         setupViewHierarchy()

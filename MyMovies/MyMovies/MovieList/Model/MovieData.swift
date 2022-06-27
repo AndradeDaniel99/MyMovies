@@ -16,26 +16,21 @@ struct MovieData: Decodable {
 }
 
 struct Movie: Decodable {
+    let id: Int
     let title: String
-    let image: String
-    let description: String // (1999)
-    let runtimeStr: String // 130 min
-    let genres: String // action, drama
-    let plot: String // short plot of the movie
-    let stars: String // leonardo dicaprio, joel santana, tom cruise
+    let release_date: String // "2022-05-04"
+    let genre_ids: [Int] // 14, 15, 16
+    let overview: String // short plot of the movie
+    let backdrop_path: String // "/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg"
+    let poster_path: String
+    
     
     func details() -> String {
         let details: String = """
                             
-                            Runtime: \(runtimeStr)
+                            Overview:
+                            \(overview)
                             
-                            Genres: \(genres)
-                            
-                            Plot:
-                            \(plot)
-                            
-                            Stars:
-                            \(stars)
                             """
         return details
     }
