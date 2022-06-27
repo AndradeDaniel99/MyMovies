@@ -19,9 +19,11 @@ class MovieDetailsViewController {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.left
-        
+        var genre_list = Genre_list(genre_ids: movie.genre_ids)
+        genre_list.addGenre()
+        let details = movie.details()+genre_list.printGenres()
         let attributedMessageText = NSMutableAttributedString(
-            string: movie.details(),
+            string: details,
             attributes: [
                 NSAttributedString.Key.paragraphStyle: paragraphStyle,
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)
