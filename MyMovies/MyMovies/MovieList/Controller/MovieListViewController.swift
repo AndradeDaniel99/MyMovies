@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 protocol FavoritesDelegate: AnyObject{
     func addFavorite(movie: Movie)

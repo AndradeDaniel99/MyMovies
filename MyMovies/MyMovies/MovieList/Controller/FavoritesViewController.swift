@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class FavoritesViewController: UIViewController, UITableViewDataSource {
+class FavoritesViewController: UIViewController {
     
     var myMovies: [Movie] = []
     
@@ -34,6 +34,10 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
         view.addSubview(myTableView)
     }
     
+    
+}
+
+extension FavoritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         myMovies.count
     }
@@ -42,10 +46,16 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.text = myMovies[indexPath.row].title
-        // content.image =
+        //content.image = UIImage(data: data)
+        content.text = self.myMovies[indexPath.row].title
         cell.contentConfiguration = content
         return cell
+    }
+}
+
+extension FavoritesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
 
