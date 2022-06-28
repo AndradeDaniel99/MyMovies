@@ -30,7 +30,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
 //    }()
     
     func setupCell(posterUrl: String){
-        let preUrl = "https://image.tmdb.org/t/p/w342/"
+        let preUrl = "https://image.tmdb.org/t/p/w185/"
         let processor = RoundCornerImageProcessor(cornerRadius: 20)
         let url = URL.init(string: preUrl+posterUrl)
         self.moviePoster.kf.indicatorType = .activity

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FavoritesViewController: UIViewController, UITableViewDataSource {
     
@@ -40,9 +41,10 @@ class FavoritesViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        cell.textLabel?.text = myMovies[indexPath.row].title
-        
+        var content = cell.defaultContentConfiguration()
+        content.text = myMovies[indexPath.row].title
+        // content.image =
+        cell.contentConfiguration = content
         return cell
     }
 }

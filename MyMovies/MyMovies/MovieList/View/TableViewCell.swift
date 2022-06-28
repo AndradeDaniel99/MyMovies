@@ -40,29 +40,39 @@ class TableViewCell: UITableViewCell {
         return title
     }()
     
-    func setupCell(title: String){
+    func setupCell(posterUrl: String, title: String){
         self.movieTitle.text = title
-//        let processor = DownsamplingImageProcessor(size: CGSize(width: 300, height: 445))
-//        let url = URL.init(string: posterUrl)
-//        self.moviePoster.kf.indicatorType = .activity
-//        self.moviePoster.kf.setImage(with: url, options: [.processor(processor)])
+        let preUrl = "https://image.tmdb.org/t/p/w92/"
+        let processor = RoundCornerImageProcessor(cornerRadius: 20)
+        let url = URL.init(string: preUrl+posterUrl)
+        self.moviePoster.kf.indicatorType = .activity
+        self.moviePoster.kf.setImage(with: url, options: [.processor(processor)])
         setupViewHierarchy()
         setupConstraints()
         configureView()
     }
     
     func setupViewHierarchy(){
-        //addSubview(moviePoster)
+        addSubview(moviePoster)
         addSubview(movieTitle)
     }
     
     func setupConstraints(){
-        //iePoster.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
-        movieTitle.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        movieTitle.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        movieTitle.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        movieTitle.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        let constraints = [
+            moviePoster.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            moviePoster.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            moviePoster.heightAnchor.constraint(equalToConstant: 10),
+            moviePoster.trailingAnchor.constraint(equalTo: movieTitle.leadingAnchor, constant: -10),
+            moviePoster.widthAnchor.constraint(equalToConstant: 10),
+            movieTitle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+//        moviePoster.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+//
+//        movieTitle.topAnchor.constraint(equalTo: topAnchor).isActive = true
+//        movieTitle.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+//        movieTitle.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+//        movieTitle.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
     func configureView(){
