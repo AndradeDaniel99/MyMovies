@@ -9,10 +9,10 @@ import UIKit
 
 class TabViewController: UITabBarController, UITabBarControllerDelegate {
 
-    
     let movieListVC = MovieListViewController()
-    let movieListNavVC = UINavigationController()
     let favoritesVC = FavoritesViewController()
+    
+    let movieListNavVC = UINavigationController()
     let favoritesNavVC = UINavigationController()
     
     override func loadView() {
