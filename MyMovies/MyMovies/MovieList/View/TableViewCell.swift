@@ -71,13 +71,6 @@ class TableViewCell: UITableViewCell {
             movieTitle.bottomAnchor.constraint(equalTo: bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
-        
-//        moviePoster.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//
-//        movieTitle.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//        movieTitle.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-//        movieTitle.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-//        movieTitle.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
     func configureView(){

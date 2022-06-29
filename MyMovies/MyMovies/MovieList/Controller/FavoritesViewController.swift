@@ -50,13 +50,8 @@ extension FavoritesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
-//        var content = cell.defaultContentConfiguration()
-        //content.image = UIImage(data: data)
         cell.setupCell(posterUrl: self.myMovies[indexPath.row].poster_path ,title: self.myMovies[indexPath.row].title)
-        //content.text = cell.movieTitle.text
-        //cell.contentConfiguration = content
         return cell
     }
 }
