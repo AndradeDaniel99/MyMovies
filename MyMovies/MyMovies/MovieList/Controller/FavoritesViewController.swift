@@ -24,6 +24,7 @@ class FavoritesViewController: UIViewController {
         title = "My Movies"
         setupTableView()
         movielist.favoritesDelegate = self
+        myMovies = MovieDAO().recovery()
     }
     
     // MARK: - Methods
@@ -68,6 +69,7 @@ extension FavoritesViewController: FavoritesDelegate {
     func addFavorite(movie: Movie){
         DispatchQueue.main.async {
             self.myMovies.append(movie)
+            MovieDAO().save(self.myMovies)
             self.myTableView.reloadData()
             print("item \(movie.title) favorited")
         }

@@ -22,6 +22,7 @@
 		DFA8EE51284AE453000E5A39 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8EE50284AE453000E5A39 /* MovieListViewController.swift */; };
 		DFA8EE56284AE458000E5A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFA8EE55284AE458000E5A39 /* Assets.xcassets */; };
 		DFA8EE59284AE458000E5A39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA8EE57284AE458000E5A39 /* LaunchScreen.storyboard */; };
+		DFAD014E286CDB8800630C13 /* MovieDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD014D286CDB8800630C13 /* MovieDAO.swift */; };
 		DFEBFE752864E07500ED07B4 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEBFE742864E07500ED07B4 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		DFA8EE55284AE458000E5A39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFA8EE58284AE458000E5A39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFA8EE5A284AE458000E5A39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFAD014D286CDB8800630C13 /* MovieDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDAO.swift; sourceTree = "<group>"; };
 		DFEBFE742864E07500ED07B4 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 			children = (
 				DF4089A728502D6100D088B5 /* MovieManager.swift */,
 				DF1C64C5285140C700E51994 /* MovieData.swift */,
+				DFAD014D286CDB8800630C13 /* MovieDAO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				DF1C64C6285140C700E51994 /* MovieData.swift in Sources */,
 				DF8CDEB0285A5A8D0006D6E6 /* MovieCollectionView.swift in Sources */,
 				DF6370D1285ACA2B00EE649F /* FavoritesViewController.swift in Sources */,
+				DFAD014E286CDB8800630C13 /* MovieDAO.swift in Sources */,
 				DF40899F284FF47C00D088B5 /* MovieCollectionViewCell.swift in Sources */,
 				DFA8EE4D284AE453000E5A39 /* AppDelegate.swift in Sources */,
 				DFEBFE752864E07500ED07B4 /* TableViewCell.swift in Sources */,

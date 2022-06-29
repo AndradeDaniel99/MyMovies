@@ -25,6 +25,7 @@ class TableViewCell: UITableViewCell {
         let imagem:UIImageView = UIImageView()
         imagem.contentMode = .scaleToFill
         imagem.translatesAutoresizingMaskIntoConstraints = false
+        imagem.backgroundColor = .white.withAlphaComponent(0)
         return imagem
     }()
     
