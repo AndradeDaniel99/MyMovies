@@ -16,10 +16,6 @@ class StreamManager {
     
     weak var delegate: StreamManagerDelegate?
     
-//    let url = "https://imdb-api.com/API/AdvancedSearch/k_4mjiwsfg?groups=top_100"
-//    let paginationParam: String = String(1)
-//    let params = "&count=15&start="
-    
     let baseurl = "https://api.themoviedb.org/3/movie/"
     let finalurl = "/watch/providers?api_key=807c1d1c3c58e1ef234880e23ac77137"
     

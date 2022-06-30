@@ -11,6 +11,8 @@ class SelectedMovieViewController: UIViewController {
 
     let selectedMovieView = SelectedMovieView()
     
+    
+    
     let movie: Movie
     
     init(movie: Movie) {
@@ -29,7 +31,7 @@ class SelectedMovieViewController: UIViewController {
     }
     
     func setupMovieView(){
-        selectedMovieView.backgroundColor = .green
+        selectedMovieView.backgroundColor = .white
         selectedMovieView.setupView(movie: movie)
         view.addSubview(selectedMovieView)
        setupConstraints()
@@ -39,10 +41,10 @@ class SelectedMovieViewController: UIViewController {
     func setupConstraints(){
         selectedMovieView.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
-            selectedMovieView.topAnchor.constraint(equalTo: view.topAnchor),
-            selectedMovieView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            selectedMovieView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            selectedMovieView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            selectedMovieView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            selectedMovieView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
+            selectedMovieView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            selectedMovieView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }

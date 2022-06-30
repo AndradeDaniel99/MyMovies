@@ -19,7 +19,7 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         super.loadView()
         movieListNavVC.setViewControllers([movieListVC], animated: false)
         favoritesNavVC.setViewControllers([favoritesVC], animated: false)
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         movieListVC.favoritesDelegate = favoritesVC
         movieListVC.title = "Trending Movies"
         favoritesVC.title = "My Movies"
