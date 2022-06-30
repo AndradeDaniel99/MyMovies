@@ -8,25 +8,25 @@
 import Foundation
 
 struct StreamProviders: Codable {
-    let results: BR
+    let results: Region
     
-    init(results: BR){
+    init(results: Region){
         self.results = results
     }
 }
 
-struct BR: Codable {
-    let flatrate: [Stream]
+struct Region: Codable {
+    let BR: [Stream]
     
-    func printStreamName() -> String {
-        var string = ""
-        for i in 0..<flatrate.count {
-            string.append("\(flatrate[i].provider_name), ")
-        }
-        string.removeLast()
-        string.removeLast()
-        return string
-    }
+//    func printStreamName() -> String {
+//        var string = ""
+//        for i in 0..<BR.count {
+//            string.append("\(BR[i].provider_name), ")
+//        }
+//        string.removeLast()
+//        string.removeLast()
+//        return string
+//    }
 }
 
 struct Stream: Codable {

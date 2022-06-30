@@ -11,7 +11,9 @@ class SelectedMovieViewController: UIViewController {
 
     let selectedMovieView = SelectedMovieView()
     
+    let streamManager = StreamManager()
     
+    var streamProviders: [Region] = []
     
     let movie: Movie
     
@@ -26,7 +28,7 @@ class SelectedMovieViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        streamManager.fetchStream(movie.id)
         setupMovieView()
     }
     
@@ -49,4 +51,20 @@ class SelectedMovieViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
 
+}
+
+
+// MARK: - StreamManagerDelegate
+
+extension SelectedMovieViewController: StreamManagerDelegate {
+    func updateStream(stream: StreamProviders) {
+        DispatchQueue.main.async {
+            self.streamProviders.append(stream.results)
+            print(stream.results.BR[0].provider_name)
+        }
+    }
+    
+    func streamdidFailWithError(error: Error) {
+        print(error)
+    }
 }

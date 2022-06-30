@@ -8,7 +8,7 @@
 import Foundation
 
 protocol StreamManagerDelegate: AnyObject {
-    func updateStream(stream: BR)
+    func updateStream(stream: StreamProviders)
     func streamdidFailWithError(error: Error)
 }
 
@@ -38,7 +38,7 @@ class StreamManager {
                 }
                 if let safeData = data {
                     if let stream = self.parseJSON(safeData){
-                        self.delegate?.updateStream(stream: stream.results)
+                        self.delegate?.updateStream(stream: stream)
                     }
                 }
             }

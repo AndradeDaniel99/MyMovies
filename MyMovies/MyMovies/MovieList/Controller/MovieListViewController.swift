@@ -143,17 +143,6 @@ extension MovieListViewController: MovieManagerDelegate {
     }
 }
 
-// MARK: - StreamManagerDelegate
-
-extension MovieListViewController: StreamManagerDelegate {
-    func updateStream(stream: BR) {
-        
-    }
-    
-    func streamdidFailWithError(error: Error) {
-        print(error)
-    }
-}
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
