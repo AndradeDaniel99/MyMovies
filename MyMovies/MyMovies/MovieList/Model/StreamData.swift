@@ -16,7 +16,7 @@ struct StreamProviders: Codable {
 }
 
 struct Region: Codable {
-    let BR: [Stream]
+    let BR: Payments
     
 //    func printStreamName() -> String {
 //        var string = ""
@@ -27,6 +27,10 @@ struct Region: Codable {
 //        string.removeLast()
 //        return string
 //    }
+}
+
+struct Payments: Codable {
+    let flatrate: [Stream]
 }
 
 struct Stream: Codable {

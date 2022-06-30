@@ -30,8 +30,19 @@ class SelectedMovieView: UIView {
         return backdrop
     }()
     
+    let releaseDate: UILabel = {
+        let releaseDate: UILabel = UILabel()
+        releaseDate.font.withSize(18)
+        releaseDate.textAlignment = .left
+        releaseDate.numberOfLines = 0
+        releaseDate.textColor = .lightGray
+        releaseDate.translatesAutoresizingMaskIntoConstraints = false
+        return releaseDate
+    }()
+    
     func setupView(movie: Movie){
         movieTitle.text = movie.title
+        releaseDate.text = movie.release_date
         let preUrl = "https://image.tmdb.org/t/p/w780/"
         let url = URL.init(string: preUrl+movie.backdrop_path)
         self.backdrop.kf.indicatorType = .activity
@@ -43,6 +54,7 @@ class SelectedMovieView: UIView {
     func setupViewHierarchy(){
         addSubview(backdrop)
         addSubview(movieTitle)
+        addSubview(releaseDate)
     }
     
     func setupConstraints(){
@@ -54,7 +66,10 @@ class SelectedMovieView: UIView {
             
             movieTitle.topAnchor.constraint(equalTo: backdrop.bottomAnchor, constant: 20),
             movieTitle.leadingAnchor.constraint(equalTo: leadingAnchor),
-            movieTitle.trailingAnchor.constraint(equalTo: trailingAnchor)
+            movieTitle.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            releaseDate.topAnchor.constraint(equalTo: movieTitle.bottomAnchor),
+            releaseDate.leadingAnchor.constraint(equalTo: leadingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }

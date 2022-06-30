@@ -13,7 +13,7 @@ class SelectedMovieViewController: UIViewController {
     
     let streamManager = StreamManager()
     
-    var streamProviders: [Region] = []
+    var streamProviders: [Payments] = []
     
     let movie: Movie
     
@@ -59,8 +59,8 @@ class SelectedMovieViewController: UIViewController {
 extension SelectedMovieViewController: StreamManagerDelegate {
     func updateStream(stream: StreamProviders) {
         DispatchQueue.main.async {
-            self.streamProviders.append(stream.results)
-            print(stream.results.BR[0].provider_name)
+            self.streamProviders.append(stream.results.BR)
+            print(stream.results.BR.flatrate[0].provider_name)
         }
     }
     
