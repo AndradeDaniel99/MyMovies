@@ -17,21 +17,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
         return imagem
     }()
     
-//    let movieTitle: UILabel = {
-//        let title: UILabel = UILabel()
-//        title.font.withSize(18)
-//        title.textAlignment = .center
-//        title.numberOfLines = 2
-//        title.textColor = .black
-//        title.backgroundColor = .blue.withAlphaComponent(0.5)
-//
-//        title.translatesAutoresizingMaskIntoConstraints = false
-//        return title
-//    }()
-    
     func setupCell(posterUrl: String){
         let preUrl = "https://image.tmdb.org/t/p/w185/"
-        let processor = RoundCornerImageProcessor(cornerRadius: 20)
+        let processor = RoundCornerImageProcessor(cornerRadius: 10)
         let url = URL.init(string: preUrl+posterUrl)
         self.moviePoster.kf.indicatorType = .activity
         self.moviePoster.kf.setImage(with: url, options: [.processor(processor)])
@@ -43,19 +31,13 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     func setupViewHierarchy(){
         addSubview(moviePoster)
-        //addSubview(movieTitle)
     }
     
     func setupConstraints(){
-        moviePoster.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        moviePoster.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        moviePoster.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        moviePoster.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
-//        movieTitle.topAnchor.constraint(equalTo: moviePoster.bottomAnchor).isActive = true
-//        movieTitle.leadingAnchor.constraint(equalTo: moviePoster.leadingAnchor).isActive = true
-//        movieTitle.trailingAnchor.constraint(equalTo: moviePoster.trailingAnchor).isActive = true
-//        movieTitle.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        moviePoster.topAnchor.constraint(equalTo: topAnchor, constant: 1).isActive = true
+        moviePoster.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 1).isActive = true
+        moviePoster.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -1).isActive = true
+        moviePoster.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1).isActive = true
     }
     
     func configureView(){
