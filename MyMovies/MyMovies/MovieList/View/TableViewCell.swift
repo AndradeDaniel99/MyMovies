@@ -15,11 +15,11 @@ class TableViewCell: UITableViewCell {
 //        // Initialization code
 //    }
 //
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
     
     let moviePoster: UIImageView = {
         let imagem:UIImageView = UIImageView()
@@ -40,8 +40,19 @@ class TableViewCell: UITableViewCell {
         return title
     }()
     
-    func setupCell(posterUrl: String, title: String){
+    let genres: UILabel = {
+        let genres: UILabel = UILabel()
+        genres.font.withSize(14)
+        genres.textAlignment = .left
+        genres.numberOfLines = 0
+        genres.textColor = .darkGray
+        genres.translatesAutoresizingMaskIntoConstraints = false
+        return genres
+    }()
+    
+    func setupCell(posterUrl: String, title: String, genres: String){
         self.movieTitle.text = title
+        self.genres.text = genres
         let preUrl = "https://image.tmdb.org/t/p/w92/"
         let processor = RoundCornerImageProcessor(cornerRadius: 10)
         let url = URL.init(string: preUrl+posterUrl)
@@ -55,6 +66,7 @@ class TableViewCell: UITableViewCell {
     func setupViewHierarchy(){
         addSubview(moviePoster)
         addSubview(movieTitle)
+        addSubview(genres)
     }
     
     func setupConstraints(){
@@ -69,7 +81,11 @@ class TableViewCell: UITableViewCell {
             movieTitle.topAnchor.constraint(equalTo: topAnchor),
             movieTitle.leadingAnchor.constraint(equalTo: moviePoster.trailingAnchor, constant: 20),
             movieTitle.trailingAnchor.constraint(equalTo: trailingAnchor),
-            movieTitle.bottomAnchor.constraint(equalTo: bottomAnchor)
+            movieTitle.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            genres.topAnchor.constraint(equalTo: movieTitle.centerYAnchor),
+            genres.leadingAnchor.constraint(equalTo: moviePoster.trailingAnchor, constant: 20),
+            genres.bottomAnchor.constraint(equalTo: moviePoster.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }

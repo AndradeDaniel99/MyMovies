@@ -23,6 +23,8 @@
 		DFA8EE56284AE458000E5A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFA8EE55284AE458000E5A39 /* Assets.xcassets */; };
 		DFA8EE59284AE458000E5A39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA8EE57284AE458000E5A39 /* LaunchScreen.storyboard */; };
 		DFAD014E286CDB8800630C13 /* MovieDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD014D286CDB8800630C13 /* MovieDAO.swift */; };
+		DFAD0150286E1F4A00630C13 /* StreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD014F286E1F4A00630C13 /* StreamManager.swift */; };
+		DFAD0152286E1F6400630C13 /* StreamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD0151286E1F6400630C13 /* StreamData.swift */; };
 		DFEBFE752864E07500ED07B4 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEBFE742864E07500ED07B4 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,8 @@
 		DFA8EE58284AE458000E5A39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFA8EE5A284AE458000E5A39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFAD014D286CDB8800630C13 /* MovieDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDAO.swift; sourceTree = "<group>"; };
+		DFAD014F286E1F4A00630C13 /* StreamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamManager.swift; sourceTree = "<group>"; };
+		DFAD0151286E1F6400630C13 /* StreamData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamData.swift; sourceTree = "<group>"; };
 		DFEBFE742864E07500ED07B4 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +89,8 @@
 				DF4089A728502D6100D088B5 /* MovieManager.swift */,
 				DF1C64C5285140C700E51994 /* MovieData.swift */,
 				DFAD014D286CDB8800630C13 /* MovieDAO.swift */,
+				DFAD014F286E1F4A00630C13 /* StreamManager.swift */,
+				DFAD0151286E1F6400630C13 /* StreamData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -277,8 +283,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF8300A928586DB700A154D1 /* MovieDetailsViewController.swift in Sources */,
+				DFAD0152286E1F6400630C13 /* StreamData.swift in Sources */,
 				DFA8EE51284AE453000E5A39 /* MovieListViewController.swift in Sources */,
 				DF8CDEB9285A786C0006D6E6 /* LoadingReusableView.swift in Sources */,
+				DFAD0150286E1F4A00630C13 /* StreamManager.swift in Sources */,
 				DF4089A828502D6100D088B5 /* MovieManager.swift in Sources */,
 				DF1C64C6285140C700E51994 /* MovieData.swift in Sources */,
 				DF8CDEB0285A5A8D0006D6E6 /* MovieCollectionView.swift in Sources */,

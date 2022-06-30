@@ -33,7 +33,7 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Treding Movies"
+        title = "Trending Movies"
         view.backgroundColor = .white
         movieManager.delegate = self
         movieManager.fetchMovie()

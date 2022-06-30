@@ -20,10 +20,10 @@ class MovieManager {
 //    let paginationParam: String = String(1)
 //    let params = "&count=15&start="
     
-    let url = "https://api.themoviedb.org/3/trending/movie/week?api_key=807c1d1c3c58e1ef234880e23ac77137&page="
+    let movieurl = "https://api.themoviedb.org/3/trending/movie/week?api_key=807c1d1c3c58e1ef234880e23ac77137&page="
     
     func fetchMovie(_ page: String = String(1)){
-        let completeUrl = url+page
+        let completeUrl = movieurl+page
         performRequest(with: completeUrl)
     }
     

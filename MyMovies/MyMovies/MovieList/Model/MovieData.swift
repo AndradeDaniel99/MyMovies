@@ -44,6 +44,7 @@ struct Genre_list {
     let genre_ids: [Int]
     init(genre_ids: [Int]) {
         self.genre_ids = genre_ids
+        addGenre()
     }
     mutating func addGenre(){
         for i in 0..<genre_ids.count {
@@ -101,6 +102,4 @@ struct Genre_list {
         genres.removeLast()
         return genres
     }
-    
-    
 }

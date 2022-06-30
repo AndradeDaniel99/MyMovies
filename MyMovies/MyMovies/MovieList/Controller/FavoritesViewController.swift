@@ -24,7 +24,6 @@ class FavoritesViewController: UIViewController {
         title = "My Movies"
         setupTableView()
         movielist.favoritesDelegate = self
-        myMovies = MovieDAO().recovery()
     }
     
     // MARK: - Methods
@@ -52,7 +51,8 @@ extension FavoritesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
-        cell.setupCell(posterUrl: self.myMovies[indexPath.row].poster_path ,title: self.myMovies[indexPath.row].title)
+        let genreList = Genre_list(genre_ids: myMovies[indexPath.row].genre_ids).printGenres()
+        cell.setupCell(posterUrl: self.myMovies[indexPath.row].poster_path ,title: self.myMovies[indexPath.row].title, genres: genreList)
         return cell
     }
 }
@@ -69,9 +69,15 @@ extension FavoritesViewController: FavoritesDelegate {
     func addFavorite(movie: Movie){
         DispatchQueue.main.async {
             self.myMovies.append(movie)
-            MovieDAO().save(self.myMovies)
             self.myTableView.reloadData()
             print("item \(movie.title) favorited")
         }
+    }
+}
+
+
+extension FavoritesViewController: MovieManagerDelegate {
+    func teste() {
+        print("teste")
     }
 }
