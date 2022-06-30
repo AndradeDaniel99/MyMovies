@@ -74,10 +74,3 @@ extension FavoritesViewController: FavoritesDelegate {
         }
     }
 }
-
-
-extension FavoritesViewController: MovieManagerDelegate {
-    func teste() {
-        print("teste")
-    }
-}

@@ -104,10 +104,10 @@ extension MovieListViewController: UICollectionViewDataSource {
 extension MovieListViewController: UICollectionViewDelegate {
  
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let movie = movies[indexPath.item]
-        MovieDetailsViewController(controller: self).showDetails(movie, handler: { alert in
-            self.favoritesDelegate?.addFavorite(movie: movie)
-        })
+        navigationController?.pushViewController(SelectedMovieViewController(movie: movie), animated: false)
+        
     }
     
 //    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -139,6 +139,18 @@ extension MovieListViewController: MovieManagerDelegate {
     }
     
     func didFailWithError(error: Error) {
+        print(error)
+    }
+}
+
+// MARK: - StreamManagerDelegate
+
+extension MovieListViewController: StreamManagerDelegate {
+    func updateStream(stream: BR) {
+        
+    }
+    
+    func streamdidFailWithError(error: Error) {
         print(error)
     }
 }
