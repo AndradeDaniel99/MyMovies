@@ -12,10 +12,11 @@ class SelectedMovieView: UIView {
 
     let movieTitle: UILabel = {
         let title: UILabel = UILabel()
-        title.font.withSize(18)
+        //title.font.withSize(22)
+        title.font = UIFont.boldSystemFont(ofSize: 18)
         title.textAlignment = .left
         title.numberOfLines = 0
-        title.textColor = .black
+        title.textColor = .darkGray
         //title.backgroundColor = .blue.withAlphaComponent(0.5)
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
@@ -51,8 +52,9 @@ class SelectedMovieView: UIView {
             backdrop.trailingAnchor.constraint(equalTo: trailingAnchor),
             backdrop.heightAnchor.constraint(equalToConstant: 180),
             
-            movieTitle.centerYAnchor.constraint(equalTo: centerYAnchor),
-            movieTitle.centerXAnchor.constraint(equalTo: centerXAnchor)
+            movieTitle.topAnchor.constraint(equalTo: backdrop.bottomAnchor, constant: 20),
+            movieTitle.leadingAnchor.constraint(equalTo: leadingAnchor),
+            movieTitle.trailingAnchor.constraint(equalTo: trailingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }

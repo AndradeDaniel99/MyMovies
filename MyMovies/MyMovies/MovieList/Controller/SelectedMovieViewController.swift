@@ -33,7 +33,7 @@ class SelectedMovieViewController: UIViewController {
     }
     
     func setupMovieView(){
-        selectedMovieView.backgroundColor = .green
+        selectedMovieView.backgroundColor = .white
         selectedMovieView.setupView(movie: movie)
         view.addSubview(selectedMovieView)
        setupConstraints()
