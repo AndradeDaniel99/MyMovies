@@ -68,6 +68,25 @@ class SelectedMovieView: UIView {
         return title
     }()
     
+    let streamProvider: UILabel = {
+        let title: UILabel = UILabel()
+        title.font.withSize(24)
+        title.textAlignment = .left
+        title.numberOfLines = 0
+        title.textColor = .gray
+        title.translatesAutoresizingMaskIntoConstraints = false
+        return title
+    }()
+    
+    let favoriteButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        button.setTitle("Make My Movie", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .cyan
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     func setupView(movie: Movie){
         movieTitle.text = movie.title
         releaseDate.text = releaseDateFormatted(movie.release_date)
@@ -83,6 +102,19 @@ class SelectedMovieView: UIView {
         setupViewHierarchy()
         setupConstraints()
     }
+    
+    func setupStreamProviders(stream: StreamProviders){
+        if stream.results.BR.flatrate[0].provider_name.isEmpty {
+            streamProvider.text = "No streaming available for this movie in your region."
+        } else {
+            streamProvider.text = stream.results.printStreamName()
+        }
+        addSubview(streamProvider)
+        
+        streamProvider.topAnchor.constraint(equalTo: whereToWatch.bottomAnchor, constant: 20).isActive = true
+        streamProvider.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        streamProvider.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
 
     func setupViewHierarchy(){
         addSubview(backdrop)
@@ -91,6 +123,7 @@ class SelectedMovieView: UIView {
         addSubview(genres)
         addSubview(overview)
         addSubview(whereToWatch)
+        addSubview(favoriteButton)
     }
     
     func setupConstraints(){
@@ -117,7 +150,12 @@ class SelectedMovieView: UIView {
             
             whereToWatch.topAnchor.constraint(equalTo: overview.bottomAnchor, constant: 20),
             whereToWatch.leadingAnchor.constraint(equalTo: leadingAnchor),
-            whereToWatch.trailingAnchor.constraint(equalTo: trailingAnchor)
+            //whereToWatch.trailingAnchor.constraint(equalTo: trailingAnchor)
+            
+            favoriteButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            favoriteButton.topAnchor.constraint(equalTo: bottomAnchor, constant: -120),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 60),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 230)
         ]
         NSLayoutConstraint.activate(constraints)
     }

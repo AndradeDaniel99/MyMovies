@@ -15,8 +15,6 @@ class SelectedMovieViewController: UIViewController {
     
     let streamManager = StreamManager()
     
-    var streamProviders: [Payments] = []
-    
     let movie: Movie
     
     init(movie: Movie) {
@@ -39,6 +37,8 @@ class SelectedMovieViewController: UIViewController {
         selectedMovieView.backgroundColor = .white
         selectedMovieView.setupView(movie: movie)
         selectedMovieView.clipsToBounds = true
+        selectedMovieView.favoriteButton.addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
+        
         scroll.addSubview(selectedMovieView)
         scroll.isScrollEnabled = true
         //scroll.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -62,6 +62,11 @@ class SelectedMovieViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
     }
+    
+    @objc func buttonClicked() {
+        print("button clicked")
+        navigationController?.popViewController(animated: false)
+    }
 }
 
 
@@ -70,8 +75,8 @@ class SelectedMovieViewController: UIViewController {
 extension SelectedMovieViewController: StreamManagerDelegate {
     func updateStream(stream: StreamProviders) {
         DispatchQueue.main.async {
-            self.streamProviders.append(stream.results.BR)
-            print(stream.results.printStreamName())
+            self.selectedMovieView.setupStreamProviders(stream: stream)
+            //print(stream.results.printStreamName())
         }
     }
     
