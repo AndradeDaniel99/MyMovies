@@ -25,7 +25,7 @@ class TableViewCell: UITableViewCell {
         let imagem:UIImageView = UIImageView()
         imagem.contentMode = .scaleToFill
         imagem.translatesAutoresizingMaskIntoConstraints = false
-        imagem.backgroundColor = .white.withAlphaComponent(0)
+        imagem.backgroundColor = .white.withAlphaComponent(0.1)
         return imagem
     }()
     
@@ -72,9 +72,9 @@ class TableViewCell: UITableViewCell {
     func setupConstraints(){
         let constraints = [
             moviePoster.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            moviePoster.topAnchor.constraint(equalTo: contentView.topAnchor),
+            moviePoster.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3),
             moviePoster.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            moviePoster.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            moviePoster.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -3),
             moviePoster.widthAnchor.constraint(equalToConstant: 92),
             
             movieTitle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

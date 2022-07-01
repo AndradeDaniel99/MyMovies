@@ -9,7 +9,15 @@ import UIKit
 import Kingfisher
 
 class SelectedMovieView: UIView {
-
+    
+    let backdrop: UIImageView = {
+        let backdrop: UIImageView = UIImageView()
+        backdrop.contentMode = .scaleAspectFill
+        backdrop.clipsToBounds = true
+        backdrop.translatesAutoresizingMaskIntoConstraints = false
+        return backdrop
+    }()
+    
     let movieTitle: UILabel = {
         let title: UILabel = UILabel()
         //title.font.withSize(22)
@@ -22,14 +30,6 @@ class SelectedMovieView: UIView {
         return title
     }()
     
-    let backdrop: UIImageView = {
-        let backdrop: UIImageView = UIImageView()
-        backdrop.contentMode = .scaleAspectFill
-        backdrop.clipsToBounds = true
-        backdrop.translatesAutoresizingMaskIntoConstraints = false
-        return backdrop
-    }()
-    
     let releaseDate: UILabel = {
         let releaseDate: UILabel = UILabel()
         releaseDate.font.withSize(18)
@@ -40,9 +40,32 @@ class SelectedMovieView: UIView {
         return releaseDate
     }()
     
+    let genres: UILabel = {
+        let genres: UILabel = UILabel()
+        genres.font.withSize(18)
+        genres.textAlignment = .left
+        genres.numberOfLines = 0
+        genres.textColor = .lightGray
+        genres.translatesAutoresizingMaskIntoConstraints = false
+        return genres
+    }()
+    
+    let overview: UILabel = {
+        let overview: UILabel = UILabel()
+        overview.font.withSize(18)
+        overview.textAlignment = .left
+        overview.numberOfLines = 0
+        overview.textColor = .gray
+        overview.translatesAutoresizingMaskIntoConstraints = false
+        return overview
+    }()
+    
     func setupView(movie: Movie){
         movieTitle.text = movie.title
-        releaseDate.text = movie.release_date
+        releaseDate.text = releaseDateFormatted(movie.release_date)
+        let genreList = Genre_list(genre_ids: movie.genre_ids).printGenres()
+        genres.text = genreList
+        overview.text = movie.overview
         let preUrl = "https://image.tmdb.org/t/p/w780/"
         let url = URL.init(string: preUrl+movie.backdrop_path)
         self.backdrop.kf.indicatorType = .activity
@@ -55,6 +78,8 @@ class SelectedMovieView: UIView {
         addSubview(backdrop)
         addSubview(movieTitle)
         addSubview(releaseDate)
+        addSubview(genres)
+        addSubview(overview)
     }
     
     func setupConstraints(){
@@ -69,8 +94,22 @@ class SelectedMovieView: UIView {
             movieTitle.trailingAnchor.constraint(equalTo: trailingAnchor),
             
             releaseDate.topAnchor.constraint(equalTo: movieTitle.bottomAnchor),
-            releaseDate.leadingAnchor.constraint(equalTo: leadingAnchor)
+            releaseDate.leadingAnchor.constraint(equalTo: leadingAnchor),
+            
+            genres.topAnchor.constraint(equalTo: releaseDate.bottomAnchor, constant: 20),
+            genres.leadingAnchor.constraint(equalTo: leadingAnchor),
+            genres.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            overview.topAnchor.constraint(equalTo: genres.bottomAnchor, constant: 20),
+            overview.leadingAnchor.constraint(equalTo: leadingAnchor),
+            overview.trailingAnchor.constraint(equalTo: trailingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    func releaseDateFormatted(_ string: String) -> String {
+        let startIndex = string.index(string.startIndex, offsetBy: 4)
+        let formated = String(string[..<startIndex])
+        return formated
     }
 }
