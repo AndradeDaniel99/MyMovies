@@ -18,15 +18,15 @@ struct StreamProviders: Codable {
 struct Region: Codable {
     let BR: Payments
     
-//    func printStreamName() -> String {
-//        var string = ""
-//        for i in 0..<BR.count {
-//            string.append("\(BR[i].provider_name), ")
-//        }
-//        string.removeLast()
-//        string.removeLast()
-//        return string
-//    }
+    func printStreamName() -> String {
+        var string = ""
+        for i in 0..<BR.flatrate.count {
+            string.append("\(BR.flatrate[i].provider_name), ")
+        }
+        string.removeLast()
+        string.removeLast()
+        return string
+    }
 }
 
 struct Payments: Codable {

@@ -38,6 +38,7 @@ class StreamManager {
                 }
                 if let safeData = data {
                     if let stream = self.parseJSON(safeData){
+                        //print(stream.results.BR.flatrate[0].provider_name)
                         self.delegate?.updateStream(stream: stream)
                     }
                 }

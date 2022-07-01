@@ -20,19 +20,17 @@ class SelectedMovieView: UIView {
     
     let movieTitle: UILabel = {
         let title: UILabel = UILabel()
-        //title.font.withSize(22)
         title.font = UIFont.boldSystemFont(ofSize: 18)
         title.textAlignment = .left
         title.numberOfLines = 0
         title.textColor = .darkGray
-        //title.backgroundColor = .blue.withAlphaComponent(0.5)
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
     
     let releaseDate: UILabel = {
         let releaseDate: UILabel = UILabel()
-        releaseDate.font.withSize(18)
+        releaseDate.font.withSize(16)
         releaseDate.textAlignment = .left
         releaseDate.numberOfLines = 0
         releaseDate.textColor = .lightGray
@@ -42,7 +40,7 @@ class SelectedMovieView: UIView {
     
     let genres: UILabel = {
         let genres: UILabel = UILabel()
-        genres.font.withSize(18)
+        genres.font.withSize(16)
         genres.textAlignment = .left
         genres.numberOfLines = 0
         genres.textColor = .lightGray
@@ -60,12 +58,24 @@ class SelectedMovieView: UIView {
         return overview
     }()
     
+    let whereToWatch: UILabel = {
+        let title: UILabel = UILabel()
+        title.font = UIFont.boldSystemFont(ofSize: 18)
+        title.textAlignment = .left
+        title.numberOfLines = 0
+        title.textColor = .gray
+        title.translatesAutoresizingMaskIntoConstraints = false
+        return title
+    }()
+    
     func setupView(movie: Movie){
         movieTitle.text = movie.title
         releaseDate.text = releaseDateFormatted(movie.release_date)
         let genreList = Genre_list(genre_ids: movie.genre_ids).printGenres()
         genres.text = genreList
         overview.text = movie.overview
+        whereToWatch.text = "Where to watch: "
+        
         let preUrl = "https://image.tmdb.org/t/p/w780/"
         let url = URL.init(string: preUrl+movie.backdrop_path)
         self.backdrop.kf.indicatorType = .activity
@@ -80,6 +90,7 @@ class SelectedMovieView: UIView {
         addSubview(releaseDate)
         addSubview(genres)
         addSubview(overview)
+        addSubview(whereToWatch)
     }
     
     func setupConstraints(){
@@ -102,7 +113,11 @@ class SelectedMovieView: UIView {
             
             overview.topAnchor.constraint(equalTo: genres.bottomAnchor, constant: 20),
             overview.leadingAnchor.constraint(equalTo: leadingAnchor),
-            overview.trailingAnchor.constraint(equalTo: trailingAnchor)
+            overview.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            whereToWatch.topAnchor.constraint(equalTo: overview.bottomAnchor, constant: 20),
+            whereToWatch.leadingAnchor.constraint(equalTo: leadingAnchor),
+            whereToWatch.trailingAnchor.constraint(equalTo: trailingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
