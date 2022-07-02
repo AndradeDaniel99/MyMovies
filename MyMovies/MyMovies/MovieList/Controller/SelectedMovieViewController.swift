@@ -64,7 +64,7 @@ class SelectedMovieViewController: UIViewController {
     }
     
     @objc func buttonClicked() {
-        print("button clicked")
+        print(movie.id)
         navigationController?.popViewController(animated: false)
     }
 }
@@ -81,6 +81,9 @@ extension SelectedMovieViewController: StreamManagerDelegate {
     }
     
     func streamdidFailWithError(error: Error) {
-        print(error)
+        DispatchQueue.main.async {
+            self.selectedMovieView.setupEmptyStreamProviders(string: "No streaming available for this movie in your region.")
+        }
+        print(error.localizedDescription)
     }
 }

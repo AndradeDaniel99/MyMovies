@@ -85,6 +85,7 @@ class TableViewCell: UITableViewCell {
             
             genres.topAnchor.constraint(equalTo: movieTitle.centerYAnchor),
             genres.leadingAnchor.constraint(equalTo: moviePoster.trailingAnchor, constant: 20),
+            genres.trailingAnchor.constraint(equalTo: trailingAnchor),
             genres.bottomAnchor.constraint(equalTo: moviePoster.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)

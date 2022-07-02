@@ -104,11 +104,16 @@ class SelectedMovieView: UIView {
     }
     
     func setupStreamProviders(stream: StreamProviders){
-        if stream.results.BR.flatrate[0].provider_name.isEmpty {
-            streamProvider.text = "No streaming available for this movie in your region."
-        } else {
-            streamProvider.text = stream.results.printStreamName()
-        }
+        streamProvider.text = stream.results.printStreamName()
+        addSubview(streamProvider)
+        
+        streamProvider.topAnchor.constraint(equalTo: whereToWatch.bottomAnchor, constant: 20).isActive = true
+        streamProvider.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        streamProvider.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
+    
+    func setupEmptyStreamProviders(string: String){
+        streamProvider.text = string
         addSubview(streamProvider)
         
         streamProvider.topAnchor.constraint(equalTo: whereToWatch.bottomAnchor, constant: 20).isActive = true
