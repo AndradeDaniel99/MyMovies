@@ -158,7 +158,7 @@ class SelectedMovieView: UIView {
             //whereToWatch.trailingAnchor.constraint(equalTo: trailingAnchor)
             
             favoriteButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            favoriteButton.topAnchor.constraint(equalTo: bottomAnchor, constant: -120),
+            favoriteButton.topAnchor.constraint(equalTo: whereToWatch.bottomAnchor, constant: 80),
             favoriteButton.heightAnchor.constraint(equalToConstant: 60),
             favoriteButton.widthAnchor.constraint(equalToConstant: 230)
         ]
