@@ -34,6 +34,7 @@ class FavoritesViewController: UIViewController {
         let screenHeight = screenSize.height
         myTableView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight);
         myTableView.dataSource = self
+        myTableView.delegate = self
         myTableView.register(TableViewCell.self, forCellReuseIdentifier: "Cell")
         myTableView.backgroundColor = .white
         myTableView.rowHeight = 131
@@ -62,9 +63,7 @@ extension FavoritesViewController: UITableViewDataSource {
 extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movie = myMovies[indexPath.row]
-        navigationController?.pushViewController(SelectedMovieViewController(movie: movie, buttonBool: true), animated: false)
-        print("\(movie.title) selected")
-        print("selected")
+        navigationController?.pushViewController(SelectedMovieViewController(movie: movie, hideFavButton: true), animated: false)
     }
 }
 

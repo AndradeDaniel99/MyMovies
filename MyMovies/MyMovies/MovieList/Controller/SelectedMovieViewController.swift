@@ -19,9 +19,9 @@ class SelectedMovieViewController: UIViewController {
     
     var favoritesDelegate: FavoritesDelegate?
     
-    init(movie: Movie, buttonBool: Bool) {
+    init(movie: Movie, hideFavButton: Bool) {
         self.movie = movie
-        self.selectedMovieView.favoriteButton.isHidden = buttonBool
+        self.selectedMovieView.favoriteButton.isHidden = hideFavButton
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -71,6 +71,8 @@ class SelectedMovieViewController: UIViewController {
         self.favoritesDelegate?.addFavorite(movie: movie)
         navigationController?.popViewController(animated: false)
     }
+    
+    
 }
 
 
