@@ -40,7 +40,10 @@ class SelectedMovieViewController: UIViewController {
         selectedMovieView.backgroundColor = .white
         selectedMovieView.setupView(movie: movie)
         selectedMovieView.clipsToBounds = true
-        selectedMovieView.favoriteButton.addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
+        selectedMovieView.favoriteButton.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.backdropTapped))
+        selectedMovieView.backdrop.addGestureRecognizer(tapGR)
+        selectedMovieView.backdrop.isUserInteractionEnabled = true
         
         scroll.addSubview(selectedMovieView)
         scroll.isScrollEnabled = true
@@ -66,13 +69,15 @@ class SelectedMovieViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    @objc func buttonClicked() {
+    @objc func buttonTapped() {
         print(movie.id)
         self.favoritesDelegate?.addFavorite(movie: movie)
         navigationController?.popViewController(animated: false)
     }
     
-    
+    @objc func backdropTapped(){
+        
+    }
 }
 
 
