@@ -203,9 +203,9 @@
 				DF6370CC285AC9E900EE649F /* TabViewController.swift */,
 				DFA8EE50284AE453000E5A39 /* MovieListViewController.swift */,
 				DFAD0153286E2DA700630C13 /* SelectedMovieViewController.swift */,
+				DF8220812873417B00A1BFDC /* TrailerWebViewController.swift */,
 				DF6370D0285ACA2B00EE649F /* FavoritesViewController.swift */,
 				DF8300A828586DB700A154D1 /* MovieDetailsViewController.swift */,
-				DF8220812873417B00A1BFDC /* TrailerWebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

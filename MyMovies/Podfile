@@ -8,7 +8,6 @@ target 'MyMovies' do
 
   pod 'Kingfisher', '~> 7.0'
 
-
   # Pods for MyMovies
 
 

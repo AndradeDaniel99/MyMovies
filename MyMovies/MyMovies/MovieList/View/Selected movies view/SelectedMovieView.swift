@@ -7,15 +7,14 @@
 
 import UIKit
 import Kingfisher
+import WebKit
 
 class SelectedMovieView: UIView {
     
-    let backdrop: UIImageView = {
-        let backdrop: UIImageView = UIImageView()
-        backdrop.contentMode = .scaleAspectFill
-        backdrop.clipsToBounds = true
-        backdrop.translatesAutoresizingMaskIntoConstraints = false
-        return backdrop
+    let trailer: WKWebView = {
+        let trailer: WKWebView = WKWebView()
+        trailer.translatesAutoresizingMaskIntoConstraints = false
+        return trailer
     }()
     
     let movieTitle: UILabel = {
@@ -95,10 +94,6 @@ class SelectedMovieView: UIView {
         overview.text = movie.overview
         whereToWatch.text = "Where to watch: "
         
-        let preUrl = "https://image.tmdb.org/t/p/w780/"
-        let url = URL.init(string: preUrl+movie.backdrop_path)
-        self.backdrop.kf.indicatorType = .activity
-        self.backdrop.kf.setImage(with: url)
         setupViewHierarchy()
         setupConstraints()
     }
@@ -122,7 +117,7 @@ class SelectedMovieView: UIView {
     }
 
     func setupViewHierarchy(){
-        addSubview(backdrop)
+        addSubview(trailer)
         addSubview(movieTitle)
         addSubview(releaseDate)
         addSubview(genres)
@@ -133,12 +128,12 @@ class SelectedMovieView: UIView {
     
     func setupConstraints(){
         let constraints = [
-            backdrop.topAnchor.constraint(equalTo: topAnchor),
-            backdrop.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backdrop.trailingAnchor.constraint(equalTo: trailingAnchor),
-            backdrop.heightAnchor.constraint(equalToConstant: 180),
+            trailer.topAnchor.constraint(equalTo: topAnchor),
+            trailer.leadingAnchor.constraint(equalTo: leadingAnchor),
+            trailer.trailingAnchor.constraint(equalTo: trailingAnchor),
+            trailer.heightAnchor.constraint(equalToConstant: 230),
             
-            movieTitle.topAnchor.constraint(equalTo: backdrop.bottomAnchor, constant: 20),
+            movieTitle.topAnchor.constraint(equalTo: trailer.bottomAnchor, constant: 20),
             movieTitle.leadingAnchor.constraint(equalTo: leadingAnchor),
             movieTitle.trailingAnchor.constraint(equalTo: trailingAnchor),
             
