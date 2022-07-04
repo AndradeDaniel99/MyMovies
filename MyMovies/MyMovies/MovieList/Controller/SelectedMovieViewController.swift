@@ -9,6 +9,8 @@ import UIKit
 
 class SelectedMovieViewController: UIViewController {
     
+    // MARK: - Atributes
+    
     let scroll = UIScrollView()
     
     let selectedMovieView = SelectedMovieView()
@@ -21,6 +23,8 @@ class SelectedMovieViewController: UIViewController {
     
     var favoritesDelegate: FavoritesDelegate?
     
+    // MARK: - Constructors
+    
     init(movie: Movie, hideFavButton: Bool) {
         self.movie = movie
         self.selectedMovieView.favoriteButton.isHidden = hideFavButton
@@ -31,6 +35,8 @@ class SelectedMovieViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         streamManager.delegate = self
@@ -40,21 +46,13 @@ class SelectedMovieViewController: UIViewController {
         setupMovieView()
     }
     
-    func setupTrailer(key: String){
-        let baseURL = "https://www.youtube.com/embed/"
-        guard let url = URL(string: baseURL+key) else { return }
-        selectedMovieView.trailer.load(URLRequest(url: url))
-    }
+    // MARK: - Methods
     
     func setupMovieView(){
         selectedMovieView.backgroundColor = .white
         selectedMovieView.setupView(movie: movie)
         selectedMovieView.clipsToBounds = true
-        selectedMovieView.favoriteButton.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
-        
-//        let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.backdropTapped))
-//        selectedMovieView.backdrop.addGestureRecognizer(tapGR)
-//        selectedMovieView.backdrop.isUserInteractionEnabled = true
+        selectedMovieView.favoriteButton.addTarget(self, action: #selector(self.favButtonTapped), for: .touchUpInside)
         
         scroll.addSubview(selectedMovieView)
         scroll.isScrollEnabled = true
@@ -80,21 +78,18 @@ class SelectedMovieViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    @objc func buttonTapped() {
+    @objc func favButtonTapped() {
         print(movie.id)
         self.favoritesDelegate?.addFavorite(movie: movie)
         navigationController?.popViewController(animated: false)
     }
     
-    @objc func backdropTapped(){
-        let vc = TrailerWebViewController(movieID: String(movie.id))
-        vc.modalPresentationStyle = .formSheet
-        //vc.preferredContentSize = .init(width: 500, height: 800)
-        present(vc, animated: false)
-//        navigationController?.pushViewController(TrailerWebViewController(movieID: String(movie.id)), animated: false)
+    func setupTrailer(key: String){
+        let baseURL = "https://www.youtube.com/embed/"
+        guard let url = URL(string: baseURL+key) else { return }
+        selectedMovieView.trailer.load(URLRequest(url: url))
     }
 }
-
 
 // MARK: - StreamManagerDelegate
 
@@ -126,7 +121,6 @@ extension SelectedMovieViewController: TrailerManagerDelegate {
                 break
             }
         }
-        print(trailerKey + " teste")
         DispatchQueue.main.async {
             self.setupTrailer(key: trailerKey)
         }
