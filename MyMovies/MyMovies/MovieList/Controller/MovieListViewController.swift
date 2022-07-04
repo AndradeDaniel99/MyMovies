@@ -104,10 +104,10 @@ extension MovieListViewController: UICollectionViewDataSource {
 extension MovieListViewController: UICollectionViewDelegate {
  
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let movie = movies[indexPath.item]
-        navigationController?.pushViewController(SelectedMovieViewController(movie: movie), animated: false)
-        
+        let selectedMovieViewController = SelectedMovieViewController(movie: movie, buttonBool: false)
+//        selectedMovieViewController.favoritesDelegate = 
+        navigationController?.pushViewController(selectedMovieViewController, animated: false)
     }
     
 //    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

@@ -17,8 +17,11 @@ class SelectedMovieViewController: UIViewController {
     
     let movie: Movie
     
-    init(movie: Movie) {
+    var favoritesDelegate: FavoritesDelegate?
+    
+    init(movie: Movie, buttonBool: Bool) {
         self.movie = movie
+        self.selectedMovieView.favoriteButton.isHidden = buttonBool
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -65,6 +68,7 @@ class SelectedMovieViewController: UIViewController {
     
     @objc func buttonClicked() {
         print(movie.id)
+        self.favoritesDelegate?.addFavorite(movie: movie)
         navigationController?.popViewController(animated: false)
     }
 }
@@ -84,6 +88,6 @@ extension SelectedMovieViewController: StreamManagerDelegate {
         DispatchQueue.main.async {
             self.selectedMovieView.setupEmptyStreamProviders(string: "No streaming available for this movie in your region.")
         }
-        print(error.localizedDescription)
+        //print(error.localizedDescription)
     }
 }

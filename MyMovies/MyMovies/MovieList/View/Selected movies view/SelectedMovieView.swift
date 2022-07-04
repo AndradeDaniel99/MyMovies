@@ -82,7 +82,7 @@ class SelectedMovieView: UIView {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         button.setTitle("Make My Movie", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .cyan
+        button.backgroundColor = .systemMint
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -158,7 +158,7 @@ class SelectedMovieView: UIView {
             //whereToWatch.trailingAnchor.constraint(equalTo: trailingAnchor)
             
             favoriteButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            favoriteButton.topAnchor.constraint(equalTo: whereToWatch.bottomAnchor, constant: 80),
+            favoriteButton.topAnchor.constraint(equalTo: whereToWatch.bottomAnchor, constant: 100),
             favoriteButton.heightAnchor.constraint(equalToConstant: 60),
             favoriteButton.widthAnchor.constraint(equalToConstant: 230)
         ]

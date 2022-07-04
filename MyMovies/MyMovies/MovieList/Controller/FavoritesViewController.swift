@@ -60,7 +60,12 @@ extension FavoritesViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension FavoritesViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie = myMovies[indexPath.row]
+        navigationController?.pushViewController(SelectedMovieViewController(movie: movie, buttonBool: true), animated: false)
+        print("\(movie.title) selected")
+        print("selected")
+    }
 }
 
 // MARK: - FavoritesDelegate
