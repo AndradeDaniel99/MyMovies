@@ -14,6 +14,7 @@ My Movies fetch movie data from `tmdb api` and presents the trending movies in t
 - MVVM architecture
 - ViewCode
 - API consumption using URLSessions and Decodable Protocol
+- Data persistence with UserDefaults
 
 ### Small optimizations
 - Pagination of 20 movies. When the user reaches the end of the ScrollView loads more 20 movies, until the end of the list.
