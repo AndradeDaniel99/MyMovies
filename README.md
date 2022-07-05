@@ -1,7 +1,6 @@
 # MyMovies
 
 My Movies is my first app as an iOS Developer. 
----
 My Movies fetch movie data from `tmdb api` and presents the trending movies in the app, the user can watch the trailer, read movie details and see which stream services are streaming the movie so the user can go and watch.
 
 ![ezgif com-gif-maker-4](https://user-images.githubusercontent.com/3867413/177428443-d8a51c4f-8b14-4bc9-bc4e-5cd39a2f9a07.gif)
