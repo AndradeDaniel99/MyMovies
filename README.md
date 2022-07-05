@@ -16,5 +16,5 @@ My Movies fetch movie data from `tmdb api` and presents the trending movies in t
 - API consumption using URLSessions and Decodable Protocol
 
 ### Small optimizations
-- Pagination of 20 films. When the user reaches the end of the ScrollView loads more 20 movies, until the end of the list.
+- Pagination of 20 movies. When the user reaches the end of the ScrollView loads more 20 movies, until the end of the list.
 - Stream option requests are made individually when loading the SelectedMovies View, this way you avoid overloading the network by making too many requests.
