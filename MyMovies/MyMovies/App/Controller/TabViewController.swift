@@ -20,7 +20,7 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         movieListNavVC.setViewControllers([movieListVC], animated: false)
         favoritesNavVC.setViewControllers([favoritesVC], animated: false)
         view.backgroundColor = .white
-        movieListVC.favoritesDelegate = favoritesVC
+        movieListVC.favoritesDelegate = favoritesVC.viewModel
         movieListVC.title = "Trending Movies"
         favoritesVC.title = "My Movies"
         self.setViewControllers([movieListNavVC, favoritesNavVC], animated: false)

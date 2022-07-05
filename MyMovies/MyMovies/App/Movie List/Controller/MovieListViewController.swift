@@ -130,7 +130,7 @@ extension MovieListViewController: UICollectionViewDelegate {
         let movie = viewModel.movies[indexPath.item]
         let selectedMovieViewController = SelectedMovieViewController(movie: movie, hideFavButton: false)
         
-        selectedMovieViewController.favoritesDelegate = self.favoritesDelegate
+        selectedMovieViewController.viewModel.favoritesDelegate = self.favoritesDelegate
         navigationController?.pushViewController(selectedMovieViewController, animated: false)
     }
     

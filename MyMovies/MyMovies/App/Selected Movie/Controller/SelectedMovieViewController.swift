@@ -15,13 +15,10 @@ class SelectedMovieViewController: UIViewController {
     
     let selectedMovieView = SelectedMovieView()
     
-    let streamManager = StreamManager()
-    
-    let trailerManager = TrailerManager()
-    
     let movie: Movie
     
-    var favoritesDelegate: FavoritesDelegate?
+    let viewModel = SelectedMovieViewModel()
+    
     
     // MARK: - Constructors
     
@@ -39,10 +36,9 @@ class SelectedMovieViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        streamManager.delegate = self
-        streamManager.fetchStream(movie.id)
-        trailerManager.delegate = self
-        trailerManager.fetchTrailer(movieID: String(movie.id))
+        viewModel.delegate = self
+        viewModel.fetchStream()
+        viewModel.fetchTrailer()
         setupMovieView()
     }
     
@@ -50,15 +46,26 @@ class SelectedMovieViewController: UIViewController {
     
     func setupMovieView(){
         selectedMovieView.backgroundColor = .white
-        selectedMovieView.setupView(movie: movie)
         selectedMovieView.clipsToBounds = true
         selectedMovieView.favoriteButton.addTarget(self, action: #selector(self.favButtonTapped), for: .touchUpInside)
-        
+        selectedMovieView.setupView(movie: movie)
         scroll.addSubview(selectedMovieView)
         scroll.isScrollEnabled = true
         
         view.addSubview(scroll)
        setupConstraints()
+    }
+    
+    @objc func favButtonTapped() {
+        print(movie.id)
+        self.viewModel.favoritesDelegate?.addFavorite(movie: movie)
+        navigationController?.popViewController(animated: false)
+    }
+    
+    func setupTrailer(key: String){
+        let baseURL = "https://www.youtube.com/embed/"
+        guard let url = URL(string: baseURL+key) else { return }
+        selectedMovieView.trailer.load(URLRequest(url: url))
     }
     
     func setupConstraints(){
@@ -81,55 +88,6 @@ class SelectedMovieViewController: UIViewController {
         scroll.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: selectedMovieView.frame.height + 800, right: 0)
     }
     
-    @objc func favButtonTapped() {
-        print(movie.id)
-        self.favoritesDelegate?.addFavorite(movie: movie)
-        navigationController?.popViewController(animated: false)
-    }
     
-    func setupTrailer(key: String){
-        let baseURL = "https://www.youtube.com/embed/"
-        guard let url = URL(string: baseURL+key) else { return }
-        selectedMovieView.trailer.load(URLRequest(url: url))
-    }
 }
 
-// MARK: - StreamManagerDelegate
-
-extension SelectedMovieViewController: StreamManagerDelegate {
-    func updateStream(stream: StreamProviders) {
-        DispatchQueue.main.async {
-            self.selectedMovieView.setupStreamProviders(stream: stream)
-            //print(stream.results.printStreamName())
-        }
-    }
-    
-    func streamdidFailWithError(error: Error) {
-        DispatchQueue.main.async {
-            self.selectedMovieView.setupEmptyStreamProviders(string: "No streaming available for this movie in your region.")
-        }
-        //print(error.localizedDescription)
-    }
-}
-
-// MARK: - TrailerManagerDelegate
-
-extension SelectedMovieViewController: TrailerManagerDelegate {
-    
-    func updateTrailer(trailer: [Trailer]) {
-        var trailerKey: String = ""
-        for i in 0..<trailer.count {
-            if trailer[i].type == "Trailer" {
-                trailerKey = trailer[i].key
-                break
-            }
-        }
-        DispatchQueue.main.async {
-            self.setupTrailer(key: trailerKey)
-        }
-    }
-    
-    func trailerDidFailWithError(error: Error) {
-        //print(error)
-    }
-}
