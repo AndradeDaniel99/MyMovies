@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Kingfisher
 
 protocol MovieManagerDelegate: AnyObject {
     func updateMovies(movie: [Movie])
@@ -60,6 +61,22 @@ class MovieManager {
         } catch  {
             delegate?.didFailWithError(error: error)
             return nil
+        }
+    }
+    
+    
+    func fetchImage(url: URL, completion: @escaping (UIImage?) -> Void) {
+        KingfisherManager.shared.retrieveImage(with: url) { result in
+            // Do something with `result`
+            switch result {
+            case let .success(retrieveImageResult):
+                let image = retrieveImageResult.image
+                completion(image)
+                
+            case let .failure(error):
+                print("Error: \(error.localizedDescription)")
+                completion(nil)
+            }
         }
     }
 }

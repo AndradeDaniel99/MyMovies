@@ -9,8 +9,15 @@ import UIKit
 
 class MovieCollectionView: UICollectionView {
 
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: layout)
+    public init() {
+        let screenWidth = UIScreen.main.bounds.size.width
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 1, bottom: 10, right: 1)
+        layout.itemSize = CGSize(width: (screenWidth/3)-1, height: screenWidth/2)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+
+        super.init(frame: CGRect.zero, collectionViewLayout: layout)
         setupCollectionView()
     }
         

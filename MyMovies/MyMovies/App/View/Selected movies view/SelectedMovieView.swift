@@ -88,8 +88,8 @@ class SelectedMovieView: UIView {
     
     func setupView(movie: Movie){
         movieTitle.text = movie.title
-        releaseDate.text = releaseDateFormatted(movie.release_date)
-        let genreList = Genre_list(genre_ids: movie.genre_ids).printGenres()
+        releaseDate.text = releaseDateFormatted(movie.releaseDate)
+        let genreList = Genre_list(genre_ids: movie.genreIds).printGenres()
         genres.text = genreList
         overview.text = movie.overview
         whereToWatch.text = "Where to watch: "

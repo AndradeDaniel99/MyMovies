@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-struct MovieData: Codable {
+struct MovieData: Decodable {
     let results: [Movie]
     
     init(results: [Movie]){
@@ -16,14 +16,24 @@ struct MovieData: Codable {
     }
 }
 
-struct Movie: Codable {
+struct Movie: Decodable {
     let id: Int
     let title: String
-    let release_date: String // "2022-05-04"
-    let genre_ids: [Int] // 14, 15, 16
+    let releaseDate: String // "2022-05-04"
+    let genreIds: [Int] // 14, 15, 16
     let overview: String // short plot of the movie
-    let backdrop_path: String // "/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg"
-    let poster_path: String
+    let backdropPath: String // "/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg"
+    let posterPath: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case releaseDate = "release_date"
+        case genreIds = "genre_ids"
+        case overview
+        case backdropPath = "backdrop_path"
+        case posterPath = "poster_path"
+    }
     
     
     func details() -> String {

@@ -56,7 +56,7 @@ class SelectedMovieViewController: UIViewController {
         
         scroll.addSubview(selectedMovieView)
         scroll.isScrollEnabled = true
-        //scroll.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
         view.addSubview(scroll)
        setupConstraints()
     }
@@ -65,17 +65,20 @@ class SelectedMovieViewController: UIViewController {
         selectedMovieView.translatesAutoresizingMaskIntoConstraints = false
         scroll.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
-            scroll.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-            scroll.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
-            scroll.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            scroll.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            scroll.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scroll.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scroll.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scroll.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             
-            selectedMovieView.topAnchor.constraint(equalTo: scroll.layoutMarginsGuide.topAnchor),
+            selectedMovieView.topAnchor.constraint(equalTo: scroll.topAnchor),
             selectedMovieView.bottomAnchor.constraint(equalTo: scroll.layoutMarginsGuide.bottomAnchor),
             selectedMovieView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             selectedMovieView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
+        
+        scroll.contentSize = CGSize(width: selectedMovieView.frame.width, height: selectedMovieView.frame.height)
+        scroll.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: selectedMovieView.frame.height + 800, right: 0)
     }
     
     @objc func favButtonTapped() {

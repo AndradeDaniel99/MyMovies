@@ -52,8 +52,8 @@ extension FavoritesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
-        let genreList = Genre_list(genre_ids: myMovies[indexPath.row].genre_ids).printGenres()
-        cell.setupCell(posterUrl: self.myMovies[indexPath.row].poster_path ,title: self.myMovies[indexPath.row].title, genres: genreList)
+        let genreList = Genre_list(genre_ids: myMovies[indexPath.row].genreIds).printGenres()
+        cell.setupCell(posterUrl: self.myMovies[indexPath.row].posterPath ,title: self.myMovies[indexPath.row].title, genres: genreList)
         return cell
     }
 }

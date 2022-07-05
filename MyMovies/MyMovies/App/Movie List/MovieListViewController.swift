@@ -11,23 +11,24 @@ protocol FavoritesDelegate: AnyObject{
     func addFavorite(movie: Movie)
 }
 
+protocol MovieListViewControllerDelegate: UIViewController {
+    var test: String { get }
+    var myCollectionView: MovieCollectionView { get set }
+}
+
 class MovieListViewController: UIViewController {
     
     // MARK: - Atributes
 
-    var myCollectionView:MovieCollectionView?
+    var myCollectionView = MovieCollectionView()
     
     weak var favoritesDelegate: FavoritesDelegate?
-    
-    var movies: [Movie] = []
-    
-    let movieManager = MovieManager()
-    
-    var page = 1
     
     var isLoading = false
     
     var loadingView: LoadingReusableView?
+    
+    var viewModel = MovieListViewModel()
     
     // MARK: - view lifecycle
     
@@ -35,45 +36,66 @@ class MovieListViewController: UIViewController {
         super.viewDidLoad()
         title = "Trending Movies"
         view.backgroundColor = .white
-        movieManager.delegate = self
-        movieManager.fetchMovie()
+        viewModel.delegate = self
+        viewModel.fetchMovies()
         setupCollectionView()
     }
     
     // MARK: - Methods
     
     func setupCollectionView(){
-        let screenWidth = UIScreen.main.bounds.size.width
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 1, bottom: 10, right: 1)
-        layout.itemSize = CGSize(width: (screenWidth/3)-1, height: screenWidth/2)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        
-        myCollectionView = MovieCollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        myCollectionView?.dataSource = self
-        myCollectionView?.delegate = self
-        view.addSubview(myCollectionView ?? UICollectionView())
+        myCollectionView.dataSource = self
+        myCollectionView.delegate = self
+        view.addSubview(myCollectionView)
         setupviewsConstraints()
     }
     
     func setupviewsConstraints(){
-        myCollectionView?.translatesAutoresizingMaskIntoConstraints = false
-        myCollectionView?.topAnchor.constraint(equalTo:  view.topAnchor).isActive = true
-        myCollectionView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        myCollectionView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        myCollectionView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        myCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        myCollectionView.topAnchor.constraint(equalTo:  view.topAnchor).isActive = true
+        myCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        myCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        myCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
     
     @objc func showDetails(_ gesture: UILongPressGestureRecognizer){
         if gesture.state == .began {
-            let cell = gesture.view as! UICollectionViewCell
-            guard let indexPath = myCollectionView?.indexPath(for: cell) else { return }
-            let movie = movies[indexPath.item]
-            MovieDetailsViewController(controller: self).showDetails(movie, handler: { alert in
+            guard let cell = gesture.view as? UICollectionViewCell else { return }
+            guard let indexPath = myCollectionView.indexPath(for: cell) else { return }
+            let movie = viewModel.movies[indexPath.item]
+            
+            showDetails(movie, handler: { alert in
                 self.favoritesDelegate?.addFavorite(movie: movie)
             })
         }
+    }
+    
+    func showDetails(_ movie: Movie, handler: @escaping (UIAlertAction) -> Void){
+        let title = movie.title
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.left
+        
+        let genre_list = Genre_list(genre_ids: movie.genreIds)
+        let details = movie.details()+genre_list.printGenres()
+        
+        let attributedMessageText = NSMutableAttributedString(
+            string: details,
+            attributes: [
+                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)
+            ]
+        )
+        
+        alert.setValue(attributedMessageText, forKey: "attributedMessage")
+        
+        let backButton = UIAlertAction(title: "Back", style: .cancel)
+        alert.addAction(backButton)
+        
+        let favoriteButton = UIAlertAction(title: "Add favorite", style: .destructive, handler: handler)
+        alert.addAction(favoriteButton)
+        
+        present(alert, animated: true, completion: nil)
     }
 
 }
@@ -83,18 +105,19 @@ class MovieListViewController: UIViewController {
 
 extension MovieListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count
+        return viewModel.movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let myCell: MovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as? MovieCollectionViewCell else {
+        guard let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
-        myCell.setupCell(posterUrl: movies[indexPath.item].poster_path)
-        
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(showDetails(_:)))
+        let movie = viewModel.movies[indexPath.item]
+        
+        myCell.setupCell(posterUrl: movie.posterPath)
         myCell.addGestureRecognizer(longPress)
+        
         return myCell
     }
 }
@@ -104,8 +127,9 @@ extension MovieListViewController: UICollectionViewDataSource {
 extension MovieListViewController: UICollectionViewDelegate {
  
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let movie = movies[indexPath.item]
+        let movie = viewModel.movies[indexPath.item]
         let selectedMovieViewController = SelectedMovieViewController(movie: movie, hideFavButton: false)
+        
         selectedMovieViewController.favoritesDelegate = self.favoritesDelegate
         navigationController?.pushViewController(selectedMovieViewController, animated: false)
     }
@@ -119,27 +143,9 @@ extension MovieListViewController: UICollectionViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if(scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)){
-            page+=1
-            movieManager.fetchMovie(String(page))
+            viewModel.page += 1
+            viewModel.fetchMovies()
         }
-    }
-}
-
-
-// MARK: - MovieManagerDelegate
-
-extension MovieListViewController: MovieManagerDelegate {
-    
-    func updateMovies(movie: [Movie]) {
-        DispatchQueue.main.async {
-            self.movies += movie
-            self.myCollectionView?.reloadData()
-            print(self.movies[0].title)
-        }
-    }
-    
-    func didFailWithError(error: Error) {
-        print(error)
     }
 }
 
