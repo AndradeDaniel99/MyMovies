@@ -1,20 +1,16 @@
 PODS:
   - Kingfisher (7.2.2)
-  - SwipeCellKit (2.7.1)
 
 DEPENDENCIES:
   - Kingfisher (~> 7.0)
-  - SwipeCellKit
 
 SPEC REPOS:
   trunk:
     - Kingfisher
-    - SwipeCellKit
 
 SPEC CHECKSUMS:
   Kingfisher: 184d4d1a8c36666e663caf8e08abe87898595c53
-  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: 69eb8896795ebbadfae5f061841069d36442dce0
+PODFILE CHECKSUM: ff3084a13524a1915639eda77da9cc50faec39e4
 
 COCOAPODS: 1.11.3
