@@ -39,6 +39,48 @@ class FavoritesViewController: UIViewController {
         view.addSubview(myTableView)
     }
     
+    @objc func showDeleteMovieAlert(_ gesture: UILongPressGestureRecognizer){
+        if gesture.state == .began {
+            guard let cell = gesture.view as? TableViewCell else { return }
+            guard let indexPath = myTableView.indexPath(for: cell) else { return }
+            let movie = viewModel.myMovies[indexPath.row]
+            
+            showDeleteMovieAlert(movie, handler: { alert in
+                self.viewModel.myMovies.remove(at: indexPath.row)
+                self.viewModel.saveMovies()
+                self.myTableView.reloadData()
+            })
+        }
+    }
+    
+    func showDeleteMovieAlert(_ movie: Movie, handler: @escaping (UIAlertAction) -> Void){
+        let title = movie.title
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.left
+        
+        let genre_list = Genre_list(genre_ids: movie.genreIds)
+        let details = movie.details()+genre_list.printGenres()
+        
+        let attributedMessageText = NSMutableAttributedString(
+            string: details,
+            attributes: [
+                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)
+            ]
+        )
+        
+        alert.setValue(attributedMessageText, forKey: "attributedMessage")
+        
+        let backButton = UIAlertAction(title: "Back", style: .cancel)
+        alert.addAction(backButton)
+        
+        let favoriteButton = UIAlertAction(title: "Delete", style: .destructive, handler: handler)
+        alert.addAction(favoriteButton)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -51,7 +93,9 @@ extension FavoritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
         let genreList = Genre_list(genre_ids: viewModel.myMovies[indexPath.row].genreIds).printGenres()
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(showDeleteMovieAlert(_:)))
         
+        cell.addGestureRecognizer(longPress)
         cell.setupCell(posterUrl: viewModel.myMovies[indexPath.row].posterPath ,title: viewModel.myMovies[indexPath.row].title, genres: genreList)
         cell.accessoryType = .disclosureIndicator
         
