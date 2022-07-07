@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-struct MovieData: Decodable {
+struct MovieData: Codable {
     let results: [Movie]
     
     init(results: [Movie]){
@@ -16,7 +16,7 @@ struct MovieData: Decodable {
     }
 }
 
-struct Movie: Decodable {
+struct Movie: Codable, Equatable {
     let id: Int
     let title: String
     let releaseDate: String // "2022-05-04"

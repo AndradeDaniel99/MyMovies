@@ -51,7 +51,10 @@ extension FavoritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
         let genreList = Genre_list(genre_ids: viewModel.myMovies[indexPath.row].genreIds).printGenres()
+        
         cell.setupCell(posterUrl: viewModel.myMovies[indexPath.row].posterPath ,title: viewModel.myMovies[indexPath.row].title, genres: genreList)
+        cell.accessoryType = .disclosureIndicator
+        
         return cell
     }
 }
@@ -61,6 +64,8 @@ extension FavoritesViewController: UITableViewDataSource {
 extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movie = viewModel.myMovies[indexPath.row]
+        
+        tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(SelectedMovieViewController(movie: movie, hideFavButton: true), animated: false)
     }
 }
