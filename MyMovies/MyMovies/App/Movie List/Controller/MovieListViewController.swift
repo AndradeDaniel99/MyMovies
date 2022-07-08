@@ -11,11 +11,6 @@ protocol FavoritesDelegate: AnyObject{
     func addFavorite(movie: Movie)
 }
 
-protocol MovieListViewControllerDelegate: UIViewController {
-    var test: String { get }
-    var myCollectionView: MovieCollectionView { get set }
-}
-
 class MovieListViewController: UIViewController {
     
     // MARK: - Atributes
@@ -58,19 +53,19 @@ class MovieListViewController: UIViewController {
         myCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
     
-    @objc func showDetails(_ gesture: UILongPressGestureRecognizer){
+    @objc func showAlert(_ gesture: UILongPressGestureRecognizer){
         if gesture.state == .began {
             guard let cell = gesture.view as? UICollectionViewCell else { return }
             guard let indexPath = myCollectionView.indexPath(for: cell) else { return }
             let movie = viewModel.movies[indexPath.item]
             
-            showDetails(movie, handler: { alert in
+            showSelectedMovieAlert(movie, handler: { alert in
                 self.favoritesDelegate?.addFavorite(movie: movie)
             })
         }
     }
     
-    func showDetails(_ movie: Movie, handler: @escaping (UIAlertAction) -> Void){
+    func showSelectedMovieAlert(_ movie: Movie, handler: @escaping (UIAlertAction) -> Void){
         let title = movie.title
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         let paragraphStyle = NSMutableParagraphStyle()
@@ -112,7 +107,7 @@ extension MovieListViewController: UICollectionViewDataSource {
         guard let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(showDetails(_:)))
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(showAlert(_:)))
         let movie = viewModel.movies[indexPath.item]
         
         myCell.setupCell(posterUrl: movie.posterPath)
@@ -134,15 +129,16 @@ extension MovieListViewController: UICollectionViewDelegate {
         navigationController?.pushViewController(selectedMovieViewController, animated: false)
     }
     
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        if(scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)-55){
-//            pagination+=15
-//            movieManager.fetchMovie(String(pagination))
-//            }
-//    }
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if(scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)){
+            viewModel.page += 1
+            viewModel.fetchMovies()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let index = viewModel.movies.count - 5
+        if indexPath.item == index {
             viewModel.page += 1
             viewModel.fetchMovies()
         }

@@ -18,9 +18,7 @@ class SelectedMovieViewController: UIViewController {
     let movie: Movie
     
     let viewModel = SelectedMovieViewModel()
-    
-    
-    // MARK: - Constructors
+
     
     init(movie: Movie, hideFavButton: Bool) {
         self.movie = movie

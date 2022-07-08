@@ -10,6 +10,8 @@ import Foundation
 
 class SelectedMovieViewModel {
     
+    // MARK: - Atributes
+    
     weak var delegate: SelectedMovieViewController?
     
     let streamManager: StreamManager
@@ -23,6 +25,8 @@ class SelectedMovieViewModel {
         self.trailerManager = trailerManager
         setupDelegates()
     }
+    
+    // MARK: - Methods
     
     func setupDelegates(){
         streamManager.delegate = self
@@ -49,7 +53,6 @@ extension SelectedMovieViewModel: StreamManagerDelegate {
     func updateStream(stream: StreamProviders) {
         DispatchQueue.main.async {
             self.delegate?.selectedMovieView.setupStreamProviders(stream: stream)
-            //print(stream.results.printStreamName())
         }
     }
     
@@ -57,7 +60,6 @@ extension SelectedMovieViewModel: StreamManagerDelegate {
         DispatchQueue.main.async {
             self.delegate?.selectedMovieView.setupEmptyStreamProviders(string: "No streaming available for this movie in your region.")
         }
-        //print(error.localizedDescription)
     }
 }
 
@@ -79,6 +81,6 @@ extension SelectedMovieViewModel: TrailerManagerDelegate {
     }
     
     func trailerDidFailWithError(error: Error) {
-        //print(error)
+        print(error.localizedDescription)
     }
 }

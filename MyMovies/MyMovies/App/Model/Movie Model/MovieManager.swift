@@ -17,10 +17,7 @@ class MovieManager {
     
     weak var delegate: MovieManagerDelegate?
     
-//    let url = "https://imdb-api.com/API/AdvancedSearch/k_4mjiwsfg?groups=top_100"
-//    let paginationParam: String = String(1)
-//    let params = "&count=15&start="
-    
+    // trending movies of the week in tmdb API
     let movieurl = "https://api.themoviedb.org/3/trending/movie/week?api_key=807c1d1c3c58e1ef234880e23ac77137&page="
     
     func fetchMovie(_ page: String = String(1)){
@@ -72,7 +69,7 @@ class MovieManager {
             case let .success(retrieveImageResult):
                 let image = retrieveImageResult.image
                 completion(image)
-                
+
             case let .failure(error):
                 print("Error: \(error.localizedDescription)")
                 completion(nil)

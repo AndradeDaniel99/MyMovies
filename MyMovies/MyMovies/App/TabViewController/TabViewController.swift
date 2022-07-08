@@ -12,6 +12,7 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
     let movieListVC = MovieListViewController()
     let favoritesVC = FavoritesViewController()
     
+    // this navigation controllers have one use: show the view title
     let movieListNavVC = UINavigationController()
     let favoritesNavVC = UINavigationController()
     
@@ -19,10 +20,10 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         super.loadView()
         movieListNavVC.setViewControllers([movieListVC], animated: false)
         favoritesNavVC.setViewControllers([favoritesVC], animated: false)
-        view.backgroundColor = .white
         movieListVC.favoritesDelegate = favoritesVC.viewModel
         movieListVC.title = "Trending Movies"
         favoritesVC.title = "My Movies"
+        view.backgroundColor = .white
         self.setViewControllers([movieListNavVC, favoritesNavVC], animated: false)
         guard let items = self.tabBar.items else { return }
         let images = ["house", "star"]

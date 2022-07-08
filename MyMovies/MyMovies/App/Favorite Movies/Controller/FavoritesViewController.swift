@@ -47,7 +47,7 @@ class FavoritesViewController: UIViewController {
             
             showDeleteMovieAlert(movie, handler: { alert in
                 self.viewModel.myMovies.remove(at: indexPath.row)
-                self.viewModel.saveMovies()
+                self.viewModel.movieDAO.saveMovies()
                 self.myTableView.reloadData()
             })
         }

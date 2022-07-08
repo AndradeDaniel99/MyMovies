@@ -25,6 +25,8 @@ class MovieListViewModel {
         setupDelegates()
     }
     
+    // MARK: - methods
+    
     func setupDelegates() {
         movieManager.delegate = self
     }
@@ -40,6 +42,7 @@ class MovieListViewModel {
 //    }
 }
 
+// MARK: - MovieManagerDelegate
 
 extension MovieListViewModel: MovieManagerDelegate {
     func updateMovies(movie: [Movie]) {
@@ -51,6 +54,6 @@ extension MovieListViewModel: MovieManagerDelegate {
     }
     
     func didFailWithError(error: Error) {
-        print(error)
+        print(error.localizedDescription)
     }
 }

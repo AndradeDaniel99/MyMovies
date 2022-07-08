@@ -98,8 +98,8 @@
 		DF4089A628502D4A00D088B5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DF82207B28733E0A00A1BFDC /* Trailer Model */,
 				DF82207828733C0F00A1BFDC /* Movie Model */,
+				DF82207B28733E0A00A1BFDC /* Trailer Model */,
 				DF82207928733C1D00A1BFDC /* Stream Model */,
 			);
 			path = Model;
@@ -199,19 +199,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		DFA8EE61284AE693000E5A39 /* Controller */ = {
+		DFA8EE61284AE693000E5A39 /* TabViewController */ = {
 			isa = PBXGroup;
 			children = (
 				DF6370CC285AC9E900EE649F /* TabViewController.swift */,
 			);
-			path = Controller;
+			path = TabViewController;
 			sourceTree = "<group>";
 		};
 		DFA8EE62284AE716000E5A39 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				DF4089A628502D4A00D088B5 /* Model */,
-				DFA8EE61284AE693000E5A39 /* Controller */,
+				DFA8EE61284AE693000E5A39 /* TabViewController */,
 				DFFF9038287495D900818508 /* Movie List */,
 				DFFF903C28749E6500818508 /* Selected Movie */,
 				DFFF903B28749BD200818508 /* Favorite Movies */,

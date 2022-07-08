@@ -10,37 +10,47 @@ import Foundation
 
 class MovieDAO {
     
-    let defaults = UserDefaults.standard
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("movies.plist")
     
-    func save(_ movies: [Movie]) {
-        guard let path = recoverPath() else { return }
+    weak var delegate: FavoriteMoviesViewModel?
+    
+    func saveMovies(){
+        let encoder = PropertyListEncoder()
         do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: movies, requiringSecureCoding: false)
-            try data.write(to: path)
-        } catch {
-            print(String(describing: error))
+            let data = try encoder.encode(delegate?.myMovies)
+            if let dataFilePath = dataFilePath {
+                try data.write(to: dataFilePath)
+            }
+        } catch  {
+            print(error.localizedDescription)
         }
     }
     
-    func recovery() -> [Movie] {
-        guard let path = recoverPath() else { return [] }
+    func loadMovies(){
+        let decoder = PropertyListDecoder()
         do {
-            let data = try Data(contentsOf: path)
-            guard let savedMovies = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Movie] else { return [] }
-            return savedMovies
-        } catch {
-            print(String(describing: error))
-            return []
+            if let dataFilePath = dataFilePath {
+                let data = try Data(contentsOf: dataFilePath)
+                delegate?.myMovies = try decoder.decode([Movie].self, from: data)
+            }
+        } catch  {
+            print(error.localizedDescription)
         }
     }
     
-//    func delete(){
-//        defaults.removeObject(forKey: "favoritedMovies")
-//    }
-    
-    func recoverPath() -> URL? {
-        guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        let path = directory.appendingPathComponent("myMovies")
-        return path
+    func checkDoubledMovies(movie: Movie){
+        var count = 0
+        if let delegate = delegate {
+            for myMovie in delegate.myMovies {
+                if movie == myMovie {
+                    count += 1
+                }
+            }
+        }
+        
+        if count == 0 {
+            delegate?.myMovies.append(movie)
+            saveMovies()
+        }
     }
 }
