@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,12 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         if #available(iOS 13, *){
+            FirebaseApp.configure()
             return true
         } else {
             
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.rootViewController = TabViewController()
             window?.makeKeyAndVisible()
+            FirebaseApp.configure()
             
             return true
         }

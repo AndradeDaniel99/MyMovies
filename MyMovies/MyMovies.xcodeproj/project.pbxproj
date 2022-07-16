@@ -202,19 +202,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		DFA8EE61284AE693000E5A39 /* TabViewController */ = {
+		DFA8EE61284AE693000E5A39 /* TabView */ = {
 			isa = PBXGroup;
 			children = (
 				DF6370CC285AC9E900EE649F /* TabViewController.swift */,
 			);
-			path = TabViewController;
+			path = TabView;
 			sourceTree = "<group>";
 		};
 		DFA8EE62284AE716000E5A39 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				DF4089A628502D4A00D088B5 /* Model */,
-				DFA8EE61284AE693000E5A39 /* TabViewController */,
+				DFA8EE61284AE693000E5A39 /* TabView */,
 				DFFF9038287495D900818508 /* Movie List */,
 				DFFF903C28749E6500818508 /* Selected Movie */,
 				DFFF903B28749BD200818508 /* Favorite Movies */,

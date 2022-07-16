@@ -9,7 +9,6 @@ target 'MyMovies' do
   pod 'Kingfisher', '~> 7.0'
 
   pod 'FirebaseAuth'
-  pod 'FirebaseFirestore'
 
   # Pods for MyMovies
 
