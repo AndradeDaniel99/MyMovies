@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let safeWindow = UIWindow(windowScene: windowScene)
         safeWindow.makeKeyAndVisible()
-        safeWindow.rootViewController = TabViewController()
+        safeWindow.rootViewController = WelcomeViewController()
         safeWindow.frame = UIScreen.main.bounds
         window = safeWindow
     }

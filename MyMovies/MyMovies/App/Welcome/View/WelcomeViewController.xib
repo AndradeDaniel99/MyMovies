@@ -21,11 +21,11 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEb-iK-Rkn">
                     <rect key="frame" x="161" y="436" width="92.5" height="24"/>
                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfI-9Z-PEK">
-                    <rect key="frame" x="168" y="550" width="78" height="31"/>
+                    <rect key="frame" x="168" y="510" width="78" height="31"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Register"/>
                     <connections>
@@ -33,7 +33,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZJ-rw-gmh">
-                    <rect key="frame" x="177" y="621" width="60" height="31"/>
+                    <rect key="frame" x="177" y="571" width="60" height="31"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Login"/>
                     <connections>
@@ -42,14 +42,14 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="nZJ-rw-gmh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3Zp-Gs-jg6"/>
                 <constraint firstItem="UEb-iK-Rkn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7I6-OB-wPJ"/>
-                <constraint firstItem="nZJ-rw-gmh" firstAttribute="top" secondItem="xfI-9Z-PEK" secondAttribute="bottom" constant="40" id="Uwm-Xc-0hf"/>
+                <constraint firstItem="nZJ-rw-gmh" firstAttribute="top" secondItem="xfI-9Z-PEK" secondAttribute="bottom" constant="30" id="Uwm-Xc-0hf"/>
                 <constraint firstItem="xfI-9Z-PEK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lRJ-od-7ec"/>
                 <constraint firstItem="UEb-iK-Rkn" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="mFg-wN-xW5"/>
-                <constraint firstItem="xfI-9Z-PEK" firstAttribute="top" secondItem="UEb-iK-Rkn" secondAttribute="bottom" constant="90" id="qcf-Pr-XpM"/>
+                <constraint firstItem="xfI-9Z-PEK" firstAttribute="top" secondItem="UEb-iK-Rkn" secondAttribute="bottom" constant="50" id="qcf-Pr-XpM"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="66.964285714285708"/>
         </view>

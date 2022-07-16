@@ -21,6 +21,10 @@
 		DF92D083288330C7004D5C16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF92D082288330C7004D5C16 /* GoogleService-Info.plist */; };
 		DF92D08728833D42004D5C16 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92D08528833D42004D5C16 /* WelcomeViewController.swift */; };
 		DF92D08828833D42004D5C16 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF92D08628833D42004D5C16 /* WelcomeViewController.xib */; };
+		DF92D0902883426F004D5C16 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92D08E2883426F004D5C16 /* RegisterViewController.swift */; };
+		DF92D0912883426F004D5C16 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF92D08F2883426F004D5C16 /* RegisterViewController.xib */; };
+		DF92D09528835509004D5C16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92D09328835509004D5C16 /* LoginViewController.swift */; };
+		DF92D09628835509004D5C16 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF92D09428835509004D5C16 /* LoginViewController.xib */; };
 		DFA8EE4D284AE453000E5A39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8EE4C284AE453000E5A39 /* AppDelegate.swift */; };
 		DFA8EE4F284AE453000E5A39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8EE4E284AE453000E5A39 /* SceneDelegate.swift */; };
 		DFA8EE51284AE453000E5A39 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8EE50284AE453000E5A39 /* MovieListViewController.swift */; };
@@ -54,6 +58,10 @@
 		DF92D082288330C7004D5C16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DF92D08528833D42004D5C16 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		DF92D08628833D42004D5C16 /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		DF92D08E2883426F004D5C16 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		DF92D08F2883426F004D5C16 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		DF92D09328835509004D5C16 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DF92D09428835509004D5C16 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		DFA8EE49284AE453000E5A39 /* MyMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA8EE4C284AE453000E5A39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFA8EE4E284AE453000E5A39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +210,8 @@
 		DF92D08C288341FA004D5C16 /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				DF92D08E2883426F004D5C16 /* RegisterViewController.swift */,
+				DF92D08F2883426F004D5C16 /* RegisterViewController.xib */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -209,6 +219,8 @@
 		DF92D08D28834207004D5C16 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				DF92D09328835509004D5C16 /* LoginViewController.swift */,
+				DF92D09428835509004D5C16 /* LoginViewController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -419,6 +431,8 @@
 				DF92D083288330C7004D5C16 /* GoogleService-Info.plist in Resources */,
 				DF8CDEBA285A786C0006D6E6 /* LoadingReusableView.xib in Resources */,
 				DFA8EE56284AE458000E5A39 /* Assets.xcassets in Resources */,
+				DF92D09628835509004D5C16 /* LoginViewController.xib in Resources */,
+				DF92D0912883426F004D5C16 /* RegisterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,8 +497,10 @@
 				DF40899F284FF47C00D088B5 /* MovieCollectionViewCell.swift in Sources */,
 				DF82207F28733FC600A1BFDC /* TrailerData.swift in Sources */,
 				DFFF904428749FA900818508 /* FavoriteMoviesViewModel.swift in Sources */,
+				DF92D09528835509004D5C16 /* LoginViewController.swift in Sources */,
 				DFA8EE4D284AE453000E5A39 /* AppDelegate.swift in Sources */,
 				DF92D08728833D42004D5C16 /* WelcomeViewController.swift in Sources */,
+				DF92D0902883426F004D5C16 /* RegisterViewController.swift in Sources */,
 				DFAD0154286E2DA700630C13 /* SelectedMovieViewController.swift in Sources */,
 				DF82207D28733E2800A1BFDC /* TrailerManager.swift in Sources */,
 				DFAD0156286E314100630C13 /* SelectedMovieView.swift in Sources */,

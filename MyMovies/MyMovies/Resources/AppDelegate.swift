@@ -21,9 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             FirebaseApp.configure()
             return true
         } else {
-            
             window = UIWindow(frame: UIScreen.main.bounds)
-            window?.rootViewController = TabViewController()
+            window?.rootViewController = WelcomeViewController()
             window?.makeKeyAndVisible()
             FirebaseApp.configure()
             

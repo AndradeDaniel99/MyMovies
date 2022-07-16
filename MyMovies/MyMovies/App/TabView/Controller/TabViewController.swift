@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class TabViewController: UITabBarController, UITabBarControllerDelegate {
 
@@ -30,7 +31,28 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         for i in 0..<items.count {
             items[i].image = UIImage(systemName: images[i])
         }
+        
+        let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutUser))
+        movieListNavVC.viewControllers[0].navigationItem.rightBarButtonItem  = logoutBarButtonItem
+        
         setFavoritesConstraints()
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if item.tag == 0 {
+            movieListVC.myCollectionView.setContentOffset(CGPoint(x: 0, y: -130), animated: true)
+        }
+    }
+    
+    @objc func logoutUser(){
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+            navigationController?.dismiss(animated: true)
+            print("teste")
+        } catch let signOutError as NSError {
+        print("Error signing out: %@", signOutError)
+        }
     }
     
     func setFavoritesConstraints(){

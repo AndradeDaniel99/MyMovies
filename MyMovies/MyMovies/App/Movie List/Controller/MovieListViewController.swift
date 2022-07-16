@@ -34,9 +34,13 @@ class MovieListViewController: UIViewController {
         viewModel.delegate = self
         viewModel.fetchMovies()
         setupCollectionView()
+        
+       
     }
     
     // MARK: - Methods
+    
+    
     
     func setupCollectionView(){
         myCollectionView.dataSource = self
