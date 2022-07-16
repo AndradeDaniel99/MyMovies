@@ -19,6 +19,8 @@
 		DF8CDEB9285A786C0006D6E6 /* LoadingReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8CDEB7285A786C0006D6E6 /* LoadingReusableView.swift */; };
 		DF8CDEBA285A786C0006D6E6 /* LoadingReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF8CDEB8285A786C0006D6E6 /* LoadingReusableView.xib */; };
 		DF92D083288330C7004D5C16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF92D082288330C7004D5C16 /* GoogleService-Info.plist */; };
+		DF92D08728833D42004D5C16 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92D08528833D42004D5C16 /* WelcomeViewController.swift */; };
+		DF92D08828833D42004D5C16 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF92D08628833D42004D5C16 /* WelcomeViewController.xib */; };
 		DFA8EE4D284AE453000E5A39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8EE4C284AE453000E5A39 /* AppDelegate.swift */; };
 		DFA8EE4F284AE453000E5A39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8EE4E284AE453000E5A39 /* SceneDelegate.swift */; };
 		DFA8EE51284AE453000E5A39 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8EE50284AE453000E5A39 /* MovieListViewController.swift */; };
@@ -50,6 +52,8 @@
 		DF8CDEB7285A786C0006D6E6 /* LoadingReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingReusableView.swift; sourceTree = "<group>"; };
 		DF8CDEB8285A786C0006D6E6 /* LoadingReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingReusableView.xib; sourceTree = "<group>"; };
 		DF92D082288330C7004D5C16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DF92D08528833D42004D5C16 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		DF92D08628833D42004D5C16 /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		DFA8EE49284AE453000E5A39 /* MyMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA8EE4C284AE453000E5A39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFA8EE4E284AE453000E5A39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +166,53 @@
 			path = "Trailer Model";
 			sourceTree = "<group>";
 		};
+		DF92D08428833CF7004D5C16 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				DF92D08B288341E0004D5C16 /* View */,
+				DF92D08A288341C6004D5C16 /* Controller */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		DF92D08928833D58004D5C16 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DF6370CC285AC9E900EE649F /* TabViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DF92D08A288341C6004D5C16 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DF92D08528833D42004D5C16 /* WelcomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DF92D08B288341E0004D5C16 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF92D08628833D42004D5C16 /* WelcomeViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF92D08C288341FA004D5C16 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		DF92D08D28834207004D5C16 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		DFA8EE40284AE453000E5A39 = {
 			isa = PBXGroup;
 			children = (
@@ -205,7 +256,7 @@
 		DFA8EE61284AE693000E5A39 /* TabView */ = {
 			isa = PBXGroup;
 			children = (
-				DF6370CC285AC9E900EE649F /* TabViewController.swift */,
+				DF92D08928833D58004D5C16 /* Controller */,
 			);
 			path = TabView;
 			sourceTree = "<group>";
@@ -213,6 +264,9 @@
 		DFA8EE62284AE716000E5A39 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				DF92D08428833CF7004D5C16 /* Welcome */,
+				DF92D08C288341FA004D5C16 /* Register */,
+				DF92D08D28834207004D5C16 /* Login */,
 				DF4089A628502D4A00D088B5 /* Model */,
 				DFA8EE61284AE693000E5A39 /* TabView */,
 				DFFF9038287495D900818508 /* Movie List */,
@@ -360,6 +414,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF92D08828833D42004D5C16 /* WelcomeViewController.xib in Resources */,
 				DFA8EE59284AE458000E5A39 /* LaunchScreen.storyboard in Resources */,
 				DF92D083288330C7004D5C16 /* GoogleService-Info.plist in Resources */,
 				DF8CDEBA285A786C0006D6E6 /* LoadingReusableView.xib in Resources */,
@@ -429,6 +484,7 @@
 				DF82207F28733FC600A1BFDC /* TrailerData.swift in Sources */,
 				DFFF904428749FA900818508 /* FavoriteMoviesViewModel.swift in Sources */,
 				DFA8EE4D284AE453000E5A39 /* AppDelegate.swift in Sources */,
+				DF92D08728833D42004D5C16 /* WelcomeViewController.swift in Sources */,
 				DFAD0154286E2DA700630C13 /* SelectedMovieViewController.swift in Sources */,
 				DF82207D28733E2800A1BFDC /* TrailerManager.swift in Sources */,
 				DFAD0156286E314100630C13 /* SelectedMovieView.swift in Sources */,
