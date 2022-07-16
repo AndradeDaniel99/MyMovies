@@ -21,6 +21,7 @@ My Movies fetch movie data from `tmdb api` and presents the trending movies in t
 - ViewCode and xib
 - API consumption using URLSessions
 - Favorites data persisted locally via UserDefaults
+- Authentication via FirebaseAuth
 
 ### Small optimizations
 - Pagination of 20 movies. When the user reaches the end of the ScrollView loads more 20 movies, until the end of the list.
