@@ -11,7 +11,7 @@ My Movies fetch movie data from `tmdb api` and presents the trending movies in t
 ![ezgif com-gif-maker-8](https://user-images.githubusercontent.com/3867413/179374829-1f0e0d51-65f2-4caa-881c-36d36b1fc4bb.gif)
 ---
 ### Updates:
-- i will implement a search bar on homeScreen so the user can search any movie he wants.
+- i will implement a search bar on homeScreen so the user can search any movie by its title.
 ---
 ### Technologies:
 - UIKit
@@ -20,7 +20,8 @@ My Movies fetch movie data from `tmdb api` and presents the trending movies in t
 - ViewCode and xib
 - API consumption using URLSessions
 - Favorites data persisted locally via UserDefaults
-- Authentication via FirebaseAuth
+- Authentication via FirebaseAuth-
+- Dependency injection to facilitate unit tests
 
 ### Small optimizations
 - Pagination of 20 movies. When the user reaches the end of the ScrollView loads more 20 movies, until the end of the list.
