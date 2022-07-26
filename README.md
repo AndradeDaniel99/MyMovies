@@ -15,15 +15,16 @@ My Movies fetch movie data from `tmdb api` and presents the trending movies in t
 ---
 ### Technologies:
 - UIKit
-- Dependency management using cocoapods ( kingfisher, FirebaseAuth )
+- Dependency management with cocoapods ( kingfisher, FirebaseAuth )
 - MVVM architecture
 - ViewCode and xib
 - API consumption using URLSessions
 - Favorites data persisted locally via UserDefaults
-- Authentication via FirebaseAuth-
-- Dependency injection to facilitate unit tests
+- Authentication via FirebaseAuth
+
 
 ### Small optimizations
-- Pagination of 20 movies. When the user reaches the end of the ScrollView loads more 20 movies, until the end of the list.
+- Pagination of 20 movies, until the end of the list.
 - API fetch calls while the user is scrolling, to give an infinite scroll effect.
-- Stream options requests are made individually when loading the SelectedMovies View, this way you avoid overloading the network by making too many requests.
+- Stream info requests are made individually when loading the SelectedMovies View, this avoids overloading the network.
+- Dependency injection to facilitate unit tests.
