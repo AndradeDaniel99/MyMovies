@@ -10,12 +10,9 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
-    
     @IBOutlet weak var email: UITextField!
-    
     @IBOutlet weak var password: UITextField!
     
-
     @IBAction func backButton(_ sender: UIButton) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -35,9 +32,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
 }

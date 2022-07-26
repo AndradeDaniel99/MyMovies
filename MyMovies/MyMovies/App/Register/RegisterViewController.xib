@@ -21,10 +21,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bub-Zc-qBg">
-                    <rect key="frame" x="0.0" y="388" width="414" height="120"/>
+                    <rect key="frame" x="0.0" y="373" width="414" height="150"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="HrZ-2m-HRi">
-                            <rect key="frame" x="57" y="0.0" width="300" height="120"/>
+                            <rect key="frame" x="57" y="0.0" width="300" height="150"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JpQ-1T-8Ef">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
@@ -36,7 +36,7 @@
                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FhK-Rg-VZs">
-                                    <rect key="frame" x="0.0" y="44.5" width="300" height="30"/>
+                                    <rect key="frame" x="0.0" y="39.5" width="300" height="30"/>
                                     <color key="backgroundColor" systemColor="placeholderTextColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="3RM-1u-tCI"/>
@@ -45,17 +45,25 @@
                                     <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Jm-de-B4b">
-                                    <rect key="frame" x="0.0" y="89" width="300" height="31"/>
+                                    <rect key="frame" x="0.0" y="78.5" width="300" height="31"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="filled" title="Register"/>
                                     <connections>
                                         <action selector="register:" destination="-1" eventType="touchUpInside" id="mdM-S7-hZc"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YB-eB-Ify">
+                                    <rect key="frame" x="0.0" y="119" width="300" height="31"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                    <connections>
+                                        <action selector="backButton:" destination="-1" eventType="touchUpInside" id="ilt-JC-EDL"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="width" constant="300" id="N9N-BE-KMB"/>
-                                <constraint firstAttribute="height" constant="120" id="uFo-62-xgV"/>
+                                <constraint firstAttribute="height" constant="150" id="uFo-62-xgV"/>
                             </constraints>
                         </stackView>
                     </subviews>
@@ -67,7 +75,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR8-Zc-RiW">
-                    <rect key="frame" x="141" y="308" width="132" height="30"/>
+                    <rect key="frame" x="141" y="293" width="132" height="30"/>
                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>

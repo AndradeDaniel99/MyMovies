@@ -102,7 +102,7 @@ class SelectedMovieView: UIView {
         streamProvider.text = stream.results.printStreamName()
         addSubview(streamProvider)
         
-        streamProvider.topAnchor.constraint(equalTo: whereToWatch.bottomAnchor, constant: 20).isActive = true
+        streamProvider.topAnchor.constraint(equalTo: whereToWatch.bottomAnchor, constant: 10).isActive = true
         streamProvider.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         streamProvider.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
@@ -111,7 +111,7 @@ class SelectedMovieView: UIView {
         streamProvider.text = string
         addSubview(streamProvider)
         
-        streamProvider.topAnchor.constraint(equalTo: whereToWatch.bottomAnchor, constant: 20).isActive = true
+        streamProvider.topAnchor.constraint(equalTo: whereToWatch.bottomAnchor, constant: 10).isActive = true
         streamProvider.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         streamProvider.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }

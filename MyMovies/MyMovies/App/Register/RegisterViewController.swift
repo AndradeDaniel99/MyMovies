@@ -10,11 +10,13 @@ import FirebaseAuth
 
 class RegisterViewController: UIViewController {
 
-    
     @IBOutlet weak var email: UITextField!
-    
-    
     @IBOutlet weak var password: UITextField!
+    
+    
+    @IBAction func backButton(_ sender: UIButton) {
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
     
     let tab = TabViewController()
     
@@ -25,16 +27,13 @@ class RegisterViewController: UIViewController {
             if let e = error {
                 print(e.localizedDescription)
             } else {
-                self.tab.modalPresentationStyle = .fullScreen
-                self.navigationController?.present(self.tab, animated: true, completion: nil)
+                self.tab.navigationItem.setHidesBackButton(true, animated: true)
+                self.navigationController?.pushViewController(self.tab, animated: true)
             }
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
 }

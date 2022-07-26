@@ -13,47 +13,26 @@ class MovieListViewModel {
 
     var movies: [Movie] = []
     
-    let movieManager: MovieManager
+    var movieManager: MovieManaging
     
     var page = 1
     
     weak var delegate: MovieListViewController?
     
-    init(movieManager: MovieManager = MovieManager()) {
+    init(movieManager: MovieManaging = MovieManager()) {
         self.movieManager = movieManager
-
-        setupDelegates()
     }
     
     // MARK: - methods
-    
-    func setupDelegates() {
-        movieManager.delegate = self
-    }
-    
-    func fetchMovies() {
-        movieManager.fetchMovie(String(page))
-    }
-    
-//    func fetchImage(url: URL) {
-//        movieManager.fetchImage(url: URL(fileURLWithPath: "www.google.com")) { image in
-//            delegate.image = image
-//        }
-//    }
-}
-
-// MARK: - MovieManagerDelegate
-
-extension MovieListViewModel: MovieManagerDelegate {
-    func updateMovies(movie: [Movie]) {
-        DispatchQueue.main.async {
-            self.movies += movie
-            self.delegate?.myCollectionView.reloadData()
-            print(self.movies[0].title)
+        
+    func fetchMovies(completion: (() -> Void)? = nil) {
+        movieManager.fetchMovie(String(page)) { movies in
+            DispatchQueue.main.async {
+                self.movies += movies
+                self.delegate?.myCollectionView.reloadData()
+                completion?()
+            }
         }
     }
     
-    func didFailWithError(error: Error) {
-        print(error.localizedDescription)
-    }
 }

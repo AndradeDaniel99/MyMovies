@@ -25,7 +25,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfI-9Z-PEK">
-                    <rect key="frame" x="168" y="510" width="78" height="31"/>
+                    <rect key="frame" x="57" y="510" width="300" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="3RV-eP-Sm6"/>
+                    </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Register"/>
                     <connections>
@@ -33,7 +36,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZJ-rw-gmh">
-                    <rect key="frame" x="177" y="571" width="60" height="31"/>
+                    <rect key="frame" x="57" y="571" width="300" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="4X0-zb-lQl"/>
+                    </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Login"/>
                     <connections>

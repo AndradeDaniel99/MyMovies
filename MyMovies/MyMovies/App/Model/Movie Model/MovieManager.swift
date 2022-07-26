@@ -13,19 +13,25 @@ protocol MovieManagerDelegate: AnyObject {
     func didFailWithError(error: Error)
 }
 
-class MovieManager {
+protocol MovieManaging {
+    var delegate: MovieManagerDelegate? { get set }
+    
+    func fetchMovie(_ page: String, completion: @escaping ([Movie]) -> Void)
+}
+
+class MovieManager: MovieManaging {
     
     weak var delegate: MovieManagerDelegate?
     
     // trending movies of the week in tmdb API
     let movieurl = "https://api.themoviedb.org/3/trending/movie/week?api_key=807c1d1c3c58e1ef234880e23ac77137&page="
     
-    func fetchMovie(_ page: String = String(1)){
+    func fetchMovie(_ page: String = String(1), completion: @escaping ([Movie]) -> Void) {
         let completeUrl = movieurl+page
-        performRequest(with: completeUrl)
+        performRequest(with: completeUrl, completion: completion)
     }
     
-    func performRequest(with urlString: String){
+    private func performRequest(with urlString: String, completion: @escaping ([Movie]) -> Void){
         // 1. Create a URL
         if let url = URL(string: urlString){
             // 2. Create a URLSession
@@ -39,7 +45,7 @@ class MovieManager {
                 }
                 if let safeData = data {
                     if let movie = self.parseJSON(safeData){
-                        self.delegate?.updateMovies(movie: movie.results)
+                        completion(movie.results)
                     }
                 }
             }
@@ -49,7 +55,7 @@ class MovieManager {
         }
     }
     
-    func parseJSON(_ movieData: Data) -> MovieData? {
+    private func parseJSON(_ movieData: Data) -> MovieData? {
         let decoder = JSONDecoder()
         do {
             let decodeData = try decoder.decode(MovieData.self, from: movieData)
@@ -58,22 +64,6 @@ class MovieManager {
         } catch  {
             delegate?.didFailWithError(error: error)
             return nil
-        }
-    }
-    
-    
-    func fetchImage(url: URL, completion: @escaping (UIImage?) -> Void) {
-        KingfisherManager.shared.retrieveImage(with: url) { result in
-            // Do something with `result`
-            switch result {
-            case let .success(retrieveImageResult):
-                let image = retrieveImageResult.image
-                completion(image)
-
-            case let .failure(error):
-                print("Error: \(error.localizedDescription)")
-                completion(nil)
-            }
         }
     }
 }
