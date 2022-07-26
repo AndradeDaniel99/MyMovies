@@ -34,7 +34,7 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         
         let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutUser))
         movieListNavVC.viewControllers[0].navigationItem.rightBarButtonItem  = logoutBarButtonItem
-        
+        movieListNavVC.navigationBar.prefersLargeTitles = true
         setFavoritesConstraints()
     }
     

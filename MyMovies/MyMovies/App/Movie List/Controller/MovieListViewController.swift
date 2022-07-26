@@ -30,6 +30,7 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Trending Movies"
+        navigationItem.largeTitleDisplayMode = .always
         view.backgroundColor = .white
         viewModel.delegate = self
         viewModel.fetchMovies()
